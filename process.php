@@ -17,8 +17,8 @@ switch ($_GET['mode']) {
         break;
 
     case 'delete':
-        $stmt = $dbh->prepare('DELETE FROM topic WHERE id = :id');
-        $stmt->bindParam(':id', $id);
+        $stmt = $dbh->prepare('DELETE FROM board WHERE id = ?');
+        $stmt->bindParam('i', $id);
 
         $id = $_POST['id'];
         $stmt->execute();
@@ -26,15 +26,10 @@ switch ($_GET['mode']) {
         break;
 
     case 'modify':
-        $stmt = $dbh->prepare(
-            'UPDATE topic SET title = :title, description = :description WHERE id = :id'
-        );
-        $stmt->bindParam(':title', $title);
-        $stmt->bindParam(':description', $description);
-        $stmt->bindParam(':id', $id);
-
+        $stmt = $conn->prepare('UPDATE board SET title=?, content=? WHERE id=?');
+        $stmt->bind_param('ssi', $title, $content, $id);
         $title = $_POST['title'];
-        $description = $_POST['description'];
+        $content = $_POST['content'];
         $id = $_POST['id'];
         $stmt->execute();
         header("Location: list.php?id={$_POST['id']}");
