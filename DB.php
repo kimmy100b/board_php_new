@@ -10,7 +10,8 @@ function db_connect()
     $db_type = 'mysql';
     $dsn = "$db_type:host=$db_host;dbname=$db_name;charset=utf8"; //dsn : Data Source Name
 
-    $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+    // $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+    $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
 
     if (!$conn) {
         echo 'Error: Unable to connect to MySQL.' . PHP_EOL;

@@ -15,15 +15,7 @@ $conn = db_connect();
     <title>게시판 목차</title>
 </head>
 <body>
-    <?php
-    $sql = 'select * from board';
-    $stmh = $conn->query($sql);
-    $count = $stmh->num_rows;
-    if ($count < 1) {
-        print '게시물이 없습니다.<br/>';
-    } else {
-         ?>
-  <div class="list-table">
+    <div class="list-table">
     <table class="table table-hover">
       <thead>
         <tr>
@@ -33,6 +25,15 @@ $conn = db_connect();
           <th scope="col">작성일</th>
         </tr>
       </thead>
+      <?php
+      $sql = 'select * from board';
+      $stmh = $conn->query($sql);
+      $count = $stmh->num_rows;
+      if ($count < 1) { ?>
+        <td colspan="4">
+        <p class="no-board">게시물이 없습니다.</p>
+        </td>
+        <?php } else { ?>
       <?php while ($row = $stmh->fetch_assoc()) { ?>
         <tr onclick="location.href='list_view.php?id=<?= $row['id'] ?>'" style="cursor:hand">
           <th scope="row"><?= $row['id'] ?></th>
@@ -40,9 +41,8 @@ $conn = db_connect();
           <td><?= $row['content'] ?></td>
           <td><?= $row['reg_date'] ?></td>
         </tr>
-      <?php }
-    }
-    ?>
+      <?php }}
+      ?>
         </table>
         <div class="col-auto input">
           <button class="btn btn-secondary" onclick="location.href='input.php'">등록</button>

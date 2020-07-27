@@ -7,3 +7,7 @@ button {
     float: right;
     padding: 0px;
 }
+
+.no-board {
+    text-align: center;
+}

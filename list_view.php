@@ -3,10 +3,13 @@
 
 require_once 'DB.php';
 $conn = db_connect();
-$result = $conn->query('SELECT * FROM board WHERE id=$id');
 $id = $_GET['id'];
+$sql = "SELECT title, content, reg_date FROM board WHERE id=$id";
+//$board = $conn->query($sql);
+$result = mysqli_query($conn, $sql);
+$board = mysqli_fetch_array($result);
 
-//$stmt->execute();
+//$board = mysqli_fetch_row($stmt);
 ?>
 
 <!DOCTYPE html>
@@ -18,18 +21,16 @@ $id = $_GET['id'];
 </head>
 <body>
     <article>
-    <?php if (empty($result)) {
-        echo '이상해';
-    } ?>
-    <?php if (!empty($result)) { ?>
-    <h2><?= htmlspecialchars($result['title']) ?></h2>
+    <?php if (!empty($board)) { ?>
+    <h2><?= $board['title'] ?>
+    </h2>
     <div class="content">
-        <?= htmlspecialchars($result['content']) ?>
+        <?= $board['content'] ?>
     </div>
     <div>
-        <a href="modify.php?id=<?= $result['id'] ?>">수정</a>
+        <a href="modify.php?id=<?= $board['id'] ?>">수정</a>
         <form method="POST" action="process.php?mode=delete">
-            <input type="hidden" name="id" value="<?= $result['id'] ?>" />
+            <input type="hidden" name="id" value="<?= $board['id'] ?>" />
             <input type="submit" value="삭제" />
         </form>
     </div>
