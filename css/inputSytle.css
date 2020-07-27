@@ -1,0 +1,9 @@
+form {
+    margin: 2% 2% 2% 2%;
+    width: 60%;
+}
+
+.submit {
+    float: right;
+    padding-right: 0px;
+}
