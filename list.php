@@ -23,26 +23,30 @@ $conn = db_connect();
         print '게시물이 없습니다.<br/>';
     } else {
          ?>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">목차</th>
-      <th scope="col">제목</th>
-      <th scope="col">내용</th>
-      <th scope="col">작성일</th>
-    </tr>
-  </thead>
-  <?php while ($row = $stmh->fetch_assoc()) { ?>
-    <tr onclick="location.href='list_view.php?id=<?= $row['id'] ?>'" style="cursor:hand">
-      <th scope="row"><?= $row['id'] ?></th>
-      <td><?= $row['title'] ?></td>
-      <td><?= $row['content'] ?></td>
-      <td><?= $row['reg_date'] ?></td>
-    </tr>
-  <?php }
+  <div class="list-table">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">목차</th>
+          <th scope="col">제목</th>
+          <th scope="col">내용</th>
+          <th scope="col">작성일</th>
+        </tr>
+      </thead>
+      <?php while ($row = $stmh->fetch_assoc()) { ?>
+        <tr onclick="location.href='list_view.php?id=<?= $row['id'] ?>'" style="cursor:hand">
+          <th scope="row"><?= $row['id'] ?></th>
+          <td><?= $row['title'] ?></td>
+          <td><?= $row['content'] ?></td>
+          <td><?= $row['reg_date'] ?></td>
+        </tr>
+      <?php }
     }
     ?>
-    </table>
-    
+        </table>
+        <div class="col-auto input">
+          <button class="btn btn-secondary" onclick="location.href='input.php'">등록</button>
+      </div> 
+  </div>   
 </body>
 </html>
