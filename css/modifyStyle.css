@@ -1,12 +1,9 @@
-.list-table {
+form {
     margin: 2% 2% 2% 2%;
     width: 60%;
 }
 
-button {
+.btn {
     float: right;
-}
-
-.no-board {
-    text-align: center;
+    margin-right: 0px;
 }

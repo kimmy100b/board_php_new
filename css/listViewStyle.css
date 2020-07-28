@@ -1,9 +1,22 @@
 .article {
     margin: 2% 2% 2% 2%;
-    width: 80%;
+    width: 60%;
 }
 
 .th-title {
     width: 10%;
     text-align: center;
+}
+
+.submit-btn {
+    padding: 0px;
+}
+
+.submit-btn__modify,
+.submit-btn__delete {
+    float: right;
+}
+
+.submit-btn__delete {
+    margin-left: 10px;
 }

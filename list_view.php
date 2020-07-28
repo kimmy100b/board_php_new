@@ -35,10 +35,10 @@ $content = nl2br($board['content']);
     </tr>
   </tbody>
 </table>
-   <div class="col-auto submit">
-        <button type="button" class="btn btn-outline-secondary btn-list" onclick="location.href='list.php'">목차</button>
-        <button type="button" class="btn btn-secondary btn-modify" onclick="location.href='modify.php?id=<?= $board['id'] ?>'">수정</button>
-        <button type="button" class="btn btn-secondary btn-delete" onclick="location.href='process_delete.php?id=<?= $board['id'] ?>'">삭제</button>
+   <div class="col-auto submit submit-btn">
+        <button type="button" class="btn btn-outline-secondary submit-btn__list" onclick="location.href='list.php'">목차</button>
+        <button type="button" class="btn btn-secondary submit-btn__delete" onclick="location.href='process_delete.php?id=<?= $board['id'] ?>'">삭제</button>
+        <button type="button" class="btn btn-secondary submit-btn__modify" onclick="location.href='modify.php?id=<?= $board['id'] ?>'">수정</button>
     </div> 
    </article>
 </body>
