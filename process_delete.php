@@ -5,11 +5,15 @@ header('Content-Type: text/html; charset=utf-8');
 require_once 'DB.php';
 $conn = db_connect();
 
-$stmt = $conn->prepare('DELETE FROM board WHERE id = ?');
-$stmt->bind_param('i', $id);
+$sql="DELETE FROM board WHERE id=$id";
 $id = $_POST['id'];
-$stmt->execute();
-header('Location: list.php');
 
-$resert = mysqli_query($conn, $sql);
+$result = mysqli_query($conn, $sql);
+
+if($result === false){
+  echo '저장하는 과정에서 문제가 생겼습니다. 관리자에게 문의해주세요';
+  error_log(mysqli_error($conn));
+} else {
+    header('Location: list.php');
+}
 ?>

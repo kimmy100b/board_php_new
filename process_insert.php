@@ -13,5 +13,5 @@ $content = $_POST['content'];
 $stmt->execute();
 header('Location: list.php');
 
-$resert = mysqli_query($conn, $sql);
+$result = mysqli_query($conn, $sql);
 ?>
