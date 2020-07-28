@@ -26,7 +26,7 @@ $conn = db_connect();
         </tr>
       </thead>
       <?php
-      $sql = 'select * from board';
+      $sql = 'select id, title, content, reg_date from board order by id';
       $stmh = $conn->query($sql);
       $count = $stmh->num_rows;
       if ($count < 1) { ?>

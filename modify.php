@@ -3,12 +3,11 @@
 
 require_once 'DB.php';
 $conn = db_connect();
-$sql = "SELECT * FROM board WHERE id=$id";
+$sql = "SELECT id, title, content FROM board WHERE id=$id";
 $id = $_GET['id'];
 $result = mysqli_query($conn, $sql);
-$board = mysqli_fetch_array($result);
-$title = $board['title'];
-$content = nl2br($board['content']);
+$title = $result['title'];
+$content = nl2br($result['content']);
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +21,7 @@ $content = nl2br($board['content']);
 </head>
 <body>
 <form action="./process_modify.php" method="POST" >
+<input type="hidden" value="<?php echo $_GET['id'];?>" name="id">
   <div class="form-group">
     <label for="exampleFormControlInput1">제목</label>
     <input type="text" name="title" class="form-control" id="exampleFormControlInput1" value="<?= strip_tags($title) ?>" required>

@@ -4,7 +4,7 @@
 require_once 'DB.php';
 $conn = db_connect();
 $id = $_GET['id'];
-$sql = "SELECT * FROM board WHERE id=$id";
+$sql = "SELECT title, content FROM board WHERE id=$id";
 //$board = $conn->query($sql);
 $result = mysqli_query($conn, $sql);
 $board = mysqli_fetch_array($result);
