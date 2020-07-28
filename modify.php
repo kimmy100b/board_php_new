@@ -18,7 +18,7 @@ $content = $_POST['content'];
     <title>Document</title>
 </head>
 <body>
-<form action="./process.php?mode=modify" method="POST" >
+<form action="./process_modify.php" method="POST" >
   <div class="form-group">
     <label for="exampleFormControlInput1">제목</label>
     <input type="text" name="title" class="form-control" id="exampleFormControlInput1" value="<?= htmlspecialchars(

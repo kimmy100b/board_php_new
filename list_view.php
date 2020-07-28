@@ -35,8 +35,13 @@ $board = mysqli_fetch_array($result);
   </tbody>
 </table>
    <div>
+   <div class="col-auto submit">
+        <button type="button" class="btn btn-outline-secondary btn-list">목차</button>
+        <button type="button" class="btn btn-secondary btn-modify">수정</button>
+        <button type="button" class="btn btn-secondary btn-delete">삭제</button>
+    </div> 
         <a href="modify.php?id=<?= $board['id'] ?>">수정</a>
-        <form method="POST" action="process.php?mode=delete">
+        <form method="POST" action="process_delete.php">
             <input type="hidden" name="id" value="<?= $board['id'] ?>" />
             <input type="submit" value="삭제" />
         </form>

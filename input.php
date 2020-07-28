@@ -12,7 +12,7 @@
     <title>게시물 작성</title>
 </head>
 <body>
-<form action="./process.php?mode=insert" method="POST" >
+<form action="./process_insert.php" method="POST" >
   <div class="form-group">
     <label for="exampleFormControlInput1">제목</label>
     <input type="text" name="title" class="form-control" id="exampleFormControlInput1" placeholder="제목을 입력하시오" required>
