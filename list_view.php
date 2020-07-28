@@ -37,8 +37,8 @@ $content = nl2br($board['content']);
 </table>
    <div class="col-auto submit submit-btn">
         <button type="button" class="btn btn-outline-secondary submit-btn__list" onclick="location.href='list.php'">목차</button>
-        <button type="button" class="btn btn-secondary submit-btn__delete" onclick="location.href='process_delete.php?id=<?= $board['id'] ?>'">삭제</button>
-        <button type="button" class="btn btn-secondary submit-btn__modify" onclick="location.href='modify.php?id=<?= $board['id'] ?>'">수정</button>
+        <button type="button" class="btn btn-secondary submit-btn__delete" onclick="location.href='process_delete.php?id=<?= $id ?>'">삭제</button>
+        <button type="button" class="btn btn-secondary submit-btn__modify" onclick="location.href='modify.php?id=<?= $id ?>'">수정</button>
     </div> 
    </article>
 </body>

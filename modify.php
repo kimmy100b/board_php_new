@@ -3,11 +3,12 @@
 
 require_once 'DB.php';
 $conn = db_connect();
-$sql = "SELECT id, title, content FROM board WHERE id=$id";
+$sql = "SELECT title, content FROM board WHERE id=$id";
 $id = $_GET['id'];
 $result = mysqli_query($conn, $sql);
-$title = $result['title'];
-$content = nl2br($result['content']);
+$board = mysqli_fetch_array($result);
+$title = strip_tags($board['title']);
+$content = strip_tags(nl2br($board['content']));
 ?>
 
 <!DOCTYPE html>
@@ -24,12 +25,12 @@ $content = nl2br($result['content']);
 <input type="hidden" value="<?php echo $_GET['id'];?>" name="id">
   <div class="form-group">
     <label for="exampleFormControlInput1">제목</label>
-    <input type="text" name="title" class="form-control" id="exampleFormControlInput1" value="<?= strip_tags($title) ?>" required>
+    <input type="text" name="title" class="form-control" id="exampleFormControlInput1" value="<?= $title ?>" required>
   </div>
   <div class="form-group">
     <label for="exampleFormControlTextarea1">내용</label>
     <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="4" required>
-    <?= strip_tags($content) ?></textarea>
+    <?= $content ?></textarea>
   </div>
    <div class="col-auto submit submit-btn">
       <button type="submit" class="btn btn-secondary">수정</button>
