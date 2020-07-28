@@ -10,3 +10,7 @@ button {
 .no-board {
     text-align: center;
 }
+
+.input-btn {
+    padding: 0px;
+}

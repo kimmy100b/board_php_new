@@ -31,7 +31,7 @@ $content = nl2br($board['content']);
     <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="4" required>
     <?= strip_tags($content) ?></textarea>
   </div>
-   <div class="col-auto submit">
+   <div class="col-auto submit submit-btn">
       <button type="submit" class="btn btn-secondary">수정</button>
     </div> 
 </form>

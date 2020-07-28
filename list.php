@@ -44,7 +44,7 @@ $conn = db_connect();
       <?php }}
       ?>
         </table>
-        <div class="col-auto input">
+        <div class="col-auto input input-btn">
           <button class="btn btn-secondary" onclick="location.href='input.php'">등록</button>
       </div> 
   </div>   
