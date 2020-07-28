@@ -41,5 +41,19 @@ $content = nl2br($board['content']);
         <button type="button" class="btn btn-secondary submit-btn__modify" onclick="location.href='modify.php?id=<?= $id ?>'">수정</button>
     </div> 
    </article>
+ 
+   <article class="comment">
+   <h5>댓글</h5>
+   <div class="input-group mb-3">
+    <input type="text" class="form-control" name="comment_content" placeholder="댓글을 입력하세요." aria-label="Recipient's username" aria-describedby="button-addon2">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary comment__btn" type="button" id="button-addon2">입력</button>
+    </div>
+  </div>
+   <hr>
+   <div class="comment__view">
+     <p>댓글 내용</p>
+   </div>
+   </article>
 </body>
 </html>

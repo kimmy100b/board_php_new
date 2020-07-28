@@ -1,4 +1,4 @@
-.article {
+article {
     margin: 2% 2% 2% 2%;
     width: 60%;
 }
@@ -19,4 +19,13 @@
 
 .submit-btn__delete {
     margin-left: 10px;
+}
+
+.comment {
+    background-color: rgba(204, 204, 204, 0.5);
+    padding: 1% 1% 1% 1%;
+}
+
+.comment__btn {
+    background-color: white;
 }
