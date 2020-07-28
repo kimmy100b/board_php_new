@@ -17,24 +17,30 @@ $board = mysqli_fetch_array($result);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/listViewStyle.css">
     <title>Document</title>
 </head>
 <body>
     <article>
-    <?php if (!empty($board)) { ?>
-    <h2><?= $board['title'] ?>
-    </h2>
-    <div class="content">
-        <?= $board['content'] ?>
-    </div>
-    <div>
+    <table class="table table-bordered">
+  <tbody>
+    <tr>
+      <th scope="row" class="th-title">제목</th>
+      <td><?= $board['title'] ?></td>
+    </tr>
+     <tr>
+      <td colspan="2" class="content"><?= $board['content'] ?></td>
+    </tr>
+  </tbody>
+</table>
+   <div>
         <a href="modify.php?id=<?= $board['id'] ?>">수정</a>
         <form method="POST" action="process.php?mode=delete">
             <input type="hidden" name="id" value="<?= $board['id'] ?>" />
             <input type="submit" value="삭제" />
         </form>
     </div>
-    <?php } ?>
-    </article>
+   </article>
 </body>
 </html>
