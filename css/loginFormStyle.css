@@ -1,0 +1,14 @@
+form {
+    margin: 2% 2% 2% 2%;
+    width: 60%;
+}
+
+.btn-group {
+    float: right;
+    margin: 0px;
+    padding: 0px;
+}
+
+.btn__reset {
+    margin-right: 10px;
+}
