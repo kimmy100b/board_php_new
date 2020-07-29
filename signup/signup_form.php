@@ -11,7 +11,7 @@
     <title>로그인</title>
 </head>
 <body>
-<form action="signup_form.php" method="POST">
+<form action="./process_signup.php" method="POST">
   <div class="form-group">
     <label for="exampleInputEmail1">아이디*</label>
     <input type="text" class="form-control" name="memberId" placeholder="아이디" aria-describedby="emailHelp" required>
@@ -32,11 +32,6 @@
     <label for="exampleInputPassword1">이메일*</label>
     <input type="text" class="form-control" name="memberEmail" placeholder="name@example.com" required>
   </div>
-  <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" name="chbox">
-    <label class="form-check-label" for="exampleCheck1">로그인 상태유지</label>
-  </div>
-
   <div class="form-group btn-group">
       <button type="reset" class="btn btn-secondary btn__reset">재작성</button> 
       <button type="submit" class="btn btn-secondary btn__submit">회원가입</button> 
