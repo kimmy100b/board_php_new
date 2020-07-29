@@ -26,23 +26,18 @@ $conn = db_connect();
         </tr>
       </thead>
       <?php
-      $sql = 'select id, title, content, reg_date from board order by id desc';
-      // $com_sql = 'select count(no) from comment';
-      // $comSql = 'select no from comment,board where comment.board_id= board.id';
+      $sql = 'select (select count(no) from comment as a where a.board_id = b.id) as comm_cnt ,id, title, content, reg_date from board as b order by id desc';
       $stmh = $conn->query($sql);
-      $comSql = 'select no from comment';
-      $comStmh = $conn->query($comSql);
       $boardCount = $stmh->num_rows;
-      $comCount = $comStmh->num_rows;
       if ($boardCount < 1) { ?>
         <td colspan="4">
         <p class="no-board">게시물이 없습니다.</p>
         </td>
         <?php } else { ?>
       <?php while ($row = $stmh->fetch_assoc()) { ?>
-        <tr onclick="location.href='list_view.php?id=<?= $row['id'] ?>'" style="cursor:hand">
+        <tr style="cursor:hand">
           <th scope="row"><?= $row['id'] ?></th>
-          <td><?php echo $row['title']." [".$comCount."]"; ?></td>
+          <td><a href="list_view.php?id=<?= $row['id'] ?>"><?php echo $row['title']." [".$row['comm_cnt']."]"; ?></a></td>
           <td><?= $row['content'] ?></td>
           <td><?= $row['reg_date'] ?></td>
         </tr>

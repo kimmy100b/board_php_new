@@ -52,7 +52,7 @@ $content = nl2br($board['content']);
   </div>
    <hr>
    <div class="comment__view">
-    <ul id="comLists">
+     <ul id="comLists">
       <?php
         $comSql = "SELECT content FROM comment WHERE board_id=$id";
         $comStmh = $conn->query($comSql);
@@ -61,45 +61,8 @@ $content = nl2br($board['content']);
         <?php
         }
       ?>
-      </ul>
+  </ul>
    </div>
    </article>
-  <script
-  src="https://code.jquery.com/jquery-3.5.1.js"
-  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-  crossorigin="anonymous"></script>
-  <script>
-  const comText = document.getElementById("commentText"),
-  comLists = document.getElementById("comLists"),
-  comBtn = document.getElementById("commentButton");
-
-  var comTemp;
-  function inputComment(){
-    var comContent = comText.value;
-    comTemp = comContent;
-    console.log("inputComment");
-  }
-
-  function outputComment(){
-    var comLi = document.createElement("li");
-    var comTextnode = document.createTextNode(comTemp);
-    comLi.appendChild(comTextnode);
-    comLists.appendChild(comLi);
-    <?php
-    /*   $inputComSql = "INSERT INTO comment(content) VALUES(?)"; 
-      $inputComStmt = mysqli_query($conn, $inputComSql);
-      $inputComStmt->bind_param('s', $inputContent);
-      $inputContent=  */
-    ?>
-    console.log("outputComment");
-  }
-
-  comBtn.addEventListener("click", inputComment);
-  comBtn.addEventListener("click", outputComment);
- /*  comBtn.addEventListener("click", inputComment).then(function(response){
-    outputComment();
-  }); */
-  
- </script> 
 </body>
 </html>
