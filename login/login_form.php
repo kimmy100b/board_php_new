@@ -7,13 +7,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/loginFormStyle.css">
+    <link rel="stylesheet" href="../css/signupFormStyle.css">
     <title>로그인</title>
 </head>
 <body>
 <?php
-        if(isset($_COOKIE["userid"])){
-            $_SESSION["userid"]=$_COOKIE["userid"];
+        if(isset($_COOKIE["memberId"])){
+            $_SESSION["memberId"]=$_COOKIE["memberId"];
         }
 
         if(!isset($_SESSION["userid"])) {
@@ -36,7 +36,7 @@
 <?php
         } else{
     ?>
-    <?=$_SESSION["userid"]?>님 환영합니다.<br/>
+    <?=$_SESSION["memberId"]?>님 환영합니다.<br/>
     <a href="logout.php">로그아웃</a>
 <?php
         }

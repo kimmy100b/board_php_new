@@ -36,6 +36,11 @@
     <input type="checkbox" class="form-check-input" name="chbox">
     <label class="form-check-label" for="exampleCheck1">로그인 상태유지</label>
   </div>
+
+  <div class="form-group btn-group">
+      <button type="reset" class="btn btn-secondary btn__reset">재작성</button> 
+      <button type="submit" class="btn btn-secondary btn__submit">회원가입</button> 
+</div>
 </form>
 </body>
 </html>
