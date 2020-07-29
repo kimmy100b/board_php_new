@@ -3,7 +3,12 @@ form {
     width: 60%;
 }
 
-.btn-login {
+.btn-group {
     float: right;
     margin: 0px;
+    padding: 0px;
+}
+
+.btn__reset {
+    margin-right: 10px;
 }
