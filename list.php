@@ -26,6 +26,7 @@ session_start();
       }else{
         ?>
       <button class="btn btn-outline-secondary login__btn" onclick="location.href='login/login_form.php'">로그인</button>
+      <button class="btn btn-outline-secondary signup__btn" onclick="location.href='signup/signup_form.php'">회원가입</button>
     <?php
       }
     ?>

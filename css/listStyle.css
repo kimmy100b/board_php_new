@@ -9,14 +9,10 @@
     margin:0px;
 }
 
-.logout__btn{
+.logout__btn,
+.login__btn{
     padding:5px 3px 5px 3px;
 }
-
-.login__btn{
-    margin-bottom: 1%;
-}
-
 .list-table {
     margin: 0% 2% 2% 2%;
     width: 60%;
