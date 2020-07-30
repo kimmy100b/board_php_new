@@ -1,33 +1,42 @@
 <?php
     header('Content-Type: text/html; charset=utf-8');
     session_start();
+
+    require_once '../DB.php';
+    $conn = db_connect();
+
     $mem_id = $_POST["memberId"];
     $mem_pw = $_POST["memberPw"];
-    $mem_name = $_POST["memberName"];
-    $mem_tel = $_POST['memberTel'];
-    $mem_email = $_POST['memberEmail'];
-    $chbox = $_POST['chbox'];
-    // $chbox = $_REQUEST["chbox"];
-
-    $_SESSION["memberId"]= $mem_id;
+    $chbox = $_REQUEST["chbox"];
 
     if(isset($chbox)){ //isset는 안에 변수가 설정되어있는 지 확인, 설정되어있으면 true, 설정 안 되어있으면 false
         $a = setcookie("memberId", $mem_id, time()+60*60*60);
         $b = setcookie("memberPw", $mem_pw,time()+60*60*60);
     }
 
-    if($mem_id== "admin"&&$mem_pw =="12345"){
-        echo "관리자 로그인";
+    $sql = "SELECT id, passwd, name FROM member WHERE id='".$mem_id."'";
+    $result = mysqli_query($conn, $sql);
+    
+    //아이디가 있다면 비밀번호 검사
+    if(mysqli_num_rows($result)==1){
+        $row = mysqli_fetch_assoc($result);
 
-        
-    }
-
-    else{
+        if($row['passwd']==$mem_pw){
+             $_SESSION["memberId"]= $mem_id;
+            ?>
+            <script>
+                alert("로그인되었습니다.");
+                location.href="../list.php"
+            </script>
+        <?php
+        }
+        else{ ?>
+            <script>
+                alert("아이디 혹은 비밀번호가 일치하지 않습니다.");
+                history.back();
+            </script>
+        <?php
+        }
+    }  
 ?>
 
-<script>alert("아이디와 비밀번호가 틀립니다!");
-history.back();</script>
-
-<?php
-    }
-?>
