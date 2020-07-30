@@ -20,7 +20,7 @@ session_start();
   <div class="login">
     <?php 
       if(isset($_SESSION['memberId'])){ ?>
-      <p class="login__msg"><?php echo $_SESSION['memberId'];?>님 안녕하세요  </p> <button class="btn btn-outline-secondary logout__btn" onclick="location.href='login/logout.php'">로그아웃</button>
+      <p class="login__msg"><?php echo $_SESSION['memberId'];?>님 안녕하세요  </p> <button class="btn btn-outline-secondary logout__btn" onclick="location.href='login/loginout.php'">로그아웃</button>
 
     <?php
       }else{
