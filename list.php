@@ -20,17 +20,25 @@ $conn = db_connect();
       <thead>
         <tr>
           <th scope="col">목차</th>
-          <th scope="col">작성자</th>
           <th scope="col">제목</th>
           <th scope="col">내용</th>
           <th scope="col">작성일</th>
         </tr>
       </thead>
       <?php
-      $sql = 'select (select count(no) from comment as a where a.board_id = b.id) as comm_cnt ,id, writer, title, content, reg_date from board as b order by id desc';
+      $sql = 'select id, title, content, reg_date from board order by id';
+     /*  $sql = 'select (select count(no) from comment as a where a.board_id = b.id) as comm_cnt ,id, writer, title, content, reg_date from board as b order by id desc';
       $stmh = $conn->query($sql);
-      $boardCount = $stmh->num_rows;
-      if ($boardCount < 1) { ?>
+      $boardCount = $stmh->num_rows; 
+      <td><a href="list_view.php?id=<?= $row['id'] ?>"><?php echo $row['title']." [".$row['comm_cnt']."]"; ?></a></td>
+*/
+
+      $com_sql = 'select no from comment';
+      $stmh = $conn->query($sql);
+      $com_stmh = $conn->query($com_sql);
+      $board_count = $stmh->num_rows;
+      $com_count = $com_stmh->num_rows;
+      if ($board_count < 1) { ?>
         <td colspan="4">
         <p class="no-board">게시물이 없습니다.</p>
         </td>
@@ -38,8 +46,7 @@ $conn = db_connect();
       <?php while ($row = $stmh->fetch_assoc()) { ?>
         <tr style="cursor:hand">
           <th scope="row"><?= $row['id'] ?></th>
-          <td><?= $row['writer'] ?></td>
-          <td><a href="list_view.php?id=<?= $row['id'] ?>"><?php echo $row['title']." [".$row['comm_cnt']."]"; ?></a></td>
+          <td><a href="list_view.php?id=<?= $row['id'] ?>"><?= $row['title'] ?></a></td>
           <td><?= $row['content'] ?></td>
           <td><?= $row['reg_date'] ?></td>
         </tr>

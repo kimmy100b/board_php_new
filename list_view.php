@@ -1,6 +1,6 @@
 <?php
 # 해당 게시판 내용 보기
-header('Content-Type: text/html; charset=utf-8');
+
 require_once 'DB.php';
 $conn = db_connect();
 $id = $_GET['id'];
@@ -45,23 +45,14 @@ $content = nl2br($board['content']);
    <article class="comment">
    <h5>댓글</h5>
    <div class="input-group mb-3">
-   <textarea name="content" class="form-control comment_text" placeholder="댓글을 입력하세요." id="commentText" rows="2" value="" required></textarea>
+    <input type="text" class="form-control" name="comment_content" placeholder="댓글을 입력하세요." aria-label="Recipient's username" aria-describedby="button-addon2">
     <div class="input-group-append">
-      <button class="btn btn-outline-secondary comment__btn" type="button" id="commentButton">등록</button>
+      <button class="btn btn-outline-secondary comment__btn" type="button" id="button-addon2">입력</button>
     </div>
   </div>
    <hr>
    <div class="comment__view">
-     <ul id="comLists">
-      <?php
-        $comSql = "SELECT content FROM comment WHERE board_id=$id";
-        $comStmh = $conn->query($comSql);
-        while($comRow = $comStmh->fetch_assoc()){?>
-          <li><?php echo $comRow['content'] ?></li>
-        <?php
-        }
-      ?>
-  </ul>
+     <p>댓글 내용</p>
    </div>
    </article>
 </body>
