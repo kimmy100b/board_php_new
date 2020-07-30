@@ -1,5 +1,7 @@
 <?php
 # 회원가입 양식 폼
+
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -13,6 +15,16 @@
 </head>
 <body>
 <form action="./process_insert.php" method="POST" >
+    <?php 
+      if(isset($_SESSION['memberId'])){ ?>
+    <div class="form-group">
+      <label for="exampleFormControlInput1">작성자</label>
+      <p> <?php echo $_SESSION['memberId']; ?> </p>
+    </div>
+    <?php
+      }
+    ?>
+
   <div class="form-group">
     <label for="exampleFormControlInput1">제목</label>
     <input type="text" name="title" class="form-control" id="exampleFormControlInput1" placeholder="제목을 입력하시오" required>
