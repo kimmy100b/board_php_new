@@ -1,11 +1,15 @@
-.login{ 
+.login{
     margin: 2% 2% 2% 2%;
     width: 60%;
 }
 
+.login__btn{
+    margin-bottom: 1%;
+}
 
-.login__href {
-    float: right;
+.list-table {
+    margin: 2% 2% 2% 2%;
+    width: 60%;
 }
 
 button {

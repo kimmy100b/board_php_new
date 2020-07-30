@@ -16,7 +16,10 @@ $conn = db_connect();
 </head>
 <body>
   <div class="login">
-    <a href="login/login_form.php" class=>로그인</a>
+    <?php 
+      
+    ?>
+    <button class="btn btn-outline-secondary login__btn" onclick="location.href='login/login_form.php'">로그인</button>
   </div>
     <div class="list-table">
     <table class="table table-hover">
