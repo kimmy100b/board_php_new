@@ -22,13 +22,16 @@
         $row = mysqli_fetch_assoc($result);
 
         if($row['passwd']==$mem_pw){
-             $_SESSION["memberId"]= $mem_id;
+            $_SESSION["memberId"]= $mem_id;
+            if(isset($_SESSION['memberId'])){
             ?>
-            <script>
+             <script>
                 alert("로그인되었습니다.");
                 location.href="../list.php"
             </script>
-        <?php
+            <?php } else{
+                echo "세션 저장실패";
+            }
         }
         else{ ?>
             <script>
@@ -39,4 +42,3 @@
         }
     }  
 ?>
-

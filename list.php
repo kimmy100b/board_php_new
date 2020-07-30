@@ -5,6 +5,8 @@
 <?php
 require_once 'DB.php';
 $conn = db_connect();
+
+session_start();
 ?>
 <html lang="en">
 <head>
@@ -17,9 +19,15 @@ $conn = db_connect();
 <body>
   <div class="login">
     <?php 
-      
+      if(isset($_SESSION['memberId'])){
+        echo $_SESSION['memberId'];?>님 안녕하세요
+    <?php
+      }else{
+        ?>
+      <button class="btn btn-outline-secondary login__btn" onclick="location.href='login/login_form.php'">로그인</button>
+    <?php
+      }
     ?>
-    <button class="btn btn-outline-secondary login__btn" onclick="location.href='login/login_form.php'">로그인</button>
   </div>
     <div class="list-table">
     <table class="table table-hover">
