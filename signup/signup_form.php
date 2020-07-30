@@ -14,7 +14,10 @@
 <form action="./process_signup.php" method="POST">
   <div class="form-group">
     <label for="exampleInputEmail1">아이디*</label>
-    <input type="text" class="form-control" name="memberId" placeholder="아이디" aria-describedby="emailHelp" required>
+    <div class="id">
+      <input type="text" class="id__input form-control" name="memberId" placeholder="아이디" aria-describedby="emailHelp" required>
+      <button class="id-overlap__btn btn btn-outline-secondary" onclick="location.href='process_idOverlap.php'">중복검사</button>
+    </div>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">비밀번호*</label>

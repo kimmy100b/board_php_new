@@ -12,3 +12,8 @@ form {
 .btn__reset {
     margin-right: 10px;
 }
+
+.id__input{
+    width:85%;
+    display: inline-block;
+}
