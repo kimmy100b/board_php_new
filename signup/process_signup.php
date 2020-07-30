@@ -10,10 +10,7 @@ $pw = $_POST["memberPw"];
 $name = $_POST["memberName"];
 $tel = $_POST['memberTel'];
 $email = $_POST['memberEmail'];
-$sql = "INSERT INTO member(id, passwd, name, title, email, reg_date, level) VALUES($id, $passwd, $name, $tel, $email,now(), 1)";
-
-header('Location: signup_result.php');
-
+$sql = "INSERT INTO member(id, passwd, name, tel, email, reg_date, level) VALUES('".$id."', '".$pw."', '".$name."', '".$tel."', '".$email."',now(), 1)";
 $result = mysqli_query($conn, $sql);
-
+header('Location: signup_result.php');
 ?>

@@ -30,7 +30,7 @@
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">이메일*</label>
-    <input type="text" class="form-control" name="memberEmail" placeholder="name@example.com" required>
+    <input type="text" class="form-control" name="memberEmail" placeholder="example@email.com" required>
   </div>
   <div class="form-group btn-group">
       <button type="reset" class="btn btn-secondary btn__reset">재작성</button> 

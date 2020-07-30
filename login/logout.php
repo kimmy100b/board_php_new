@@ -1,14 +1,14 @@
 <?php
+    header('Content-Type: text/html; charset=utf-8');
  
-        session_start();
-        $result = session_destroy();
- 
-        if($result) {
+    session_start();
+    $result = session_destroy();
+    if($result) {
 ?>
-        <script>
-                alert("로그아웃 되었습니다.");
-                history.back();
-        </script>
+    <script>
+        alert("로그아웃 되었습니다.");
+        history.back();
+    </script>
 <?php   }
 ?>
  
