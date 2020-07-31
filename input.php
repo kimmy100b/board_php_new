@@ -33,6 +33,10 @@ if(isset($user)){ ?>
     <label for="exampleFormControlTextarea1">내용</label>
     <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="4" required></textarea>
   </div>
+  <div class="form-group">
+    <label for="exampleFormControlFile1">첨부파일</label>
+    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+  </div>
    <div class="col-auto submit">
       <button type="submit" class="btn btn-secondary">제출</button>
     </div> 

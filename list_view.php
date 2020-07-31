@@ -35,14 +35,14 @@ $writer = $board['writer'];
   <tbody>
     <tr>
       <th scope="row" class="th-title">제목</th>
-      <td><?= $title ?></td>
+      <td><?php echo $title; ?></td>
     </tr>
     <tr>
       <th scope="row" class="th-writer">작성자</th>
-      <td><?= $writer ?></td>
+      <td><?php echo $writer; ?></td>
     </tr>
      <tr>
-      <td colspan="2" class="content"><?= $content ?></td>
+      <td colspan="2" class="content"><?php echo $content; ?></td>
     </tr>
   </tbody>
 </table>
