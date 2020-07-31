@@ -11,14 +11,10 @@
     $userid = $_SESSION['memberId'];
     $board_id = $_POST['id'];
     $comment = $_POST['comm_content'];
-    
-    echo $userid;
-    echo $board_id;
-    echo $comment;
-    $sql = "INSERT INTO comment(userid, board_id, comment, date) VALUES (?, ? ,?, now())";
-    
-    echo $sql;
+
+    $sql = "INSERT INTO comment(userid, board_id, comment, date) VALUES ('".$userid."', $board_id ,'".$comment."', now())";
     $stmt = mysqli_query($conn, $sql);
+    echo $sql;
 ?>
 <script>
     // histroy.back();

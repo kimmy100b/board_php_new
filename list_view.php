@@ -1,6 +1,6 @@
 <?php
 # 해당 게시판 내용 보기
-
+header('Content-Type: text/html; charset=utf-8');
 session_start();
 
 require_once 'DB.php';
@@ -67,15 +67,23 @@ $writer = $board['writer'];
    <div class="input-group mb-3">
     <input type="text" class="form-control" name="comm_content" placeholder="댓글을 입력하세요." aria-label="Recipient's username" aria-describedby="button-addon2">
     <div class="input-group-append">
-      <button class="btn btn-outline-secondary comm__btn" type="button" id="button-addon2">입력</button>
+      <button class="btn btn-outline-secondary comm__btn" type="button" id="button-addon2" onclick="location.href='process_comment.php'">입력</button>
     </div>
   </div>
    <hr>
    <div class="comm__view">
      <p>댓글 내용</p>
+     <ul>
      <?php
-      // $comm_sql = "select (select count(no) from comment as a where a.board_id = b.id) as comm_cnt ,id, writer, title, content, reg_date from board as b order by id desc";
-     ?>
+      $comm_sql = "select userid, comment from comment where board_id = (select id from board WHERE id=$id) order by no desc";
+      $comm_stmh = $conn->query($comm_sql);
+            
+      while ($row = $comm_stmh->fetch_assoc()) { ?>
+        <li><?php echo $row['userid']; ?> : <?php echo $row['comment']; ?></li>
+    <?php
+      } 
+    ?>
+    </ul>
    </div>
    </form>
    </article>
