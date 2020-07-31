@@ -15,10 +15,10 @@
     if(isset($user_id)){
         $sql = "INSERT INTO comment(user_id, board_id, comment, date) VALUES ('".$user_id."', $board_id ,'".$comment."', now())";
         $stmt = mysqli_query($conn, $sql); 
-        echo $sql;
+        
         ?>
         <script>
-            // history.back();
+           location.href="../list_view.php?id=<?php echo $board_id; ?>";
         </script>
     
     <?php    

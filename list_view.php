@@ -67,9 +67,10 @@ $writer = $board['writer'];
    <div class="input-group mb-3">
     <input type="text" class="form-control" name="comm_content" placeholder="댓글을 작성하려면 로그인 해주세요." aria-label="Recipient's username" aria-describedby="button-addon2">
     <div class="input-group-append">
-      <button class="btn btn-outline-secondary comm__btn" type="button" id="button-addon2" onclick="location.href='comment/process_comm_insert.php'">입력</button>
+      <input class="btn btn-outline-secondary comm__btn"  type="submit" id="button-addon2" value="입력" onclick="location.href='comment/process_comm_insert.php'">
     </div>
   </div>
+  </form>
   <div class="comm__view">
   <hr>
       <?php
@@ -89,7 +90,7 @@ $writer = $board['writer'];
       ?>
     
    </div>
-   </form>
+
    </article>
 </body>
 </html>
