@@ -26,7 +26,7 @@ $writer = $board['writer'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/listViewStyle.css">
+    <link rel="stylesheet" href="./css/listViewStyle.css">
     <title>Document</title>
 </head>
 <body>
@@ -48,10 +48,7 @@ $writer = $board['writer'];
 </table>
    <div class="col-auto submit submit-btn">
         <button type="button" class="btn btn-outline-secondary submit-btn__list" onclick="location.href='list.php'">목차</button>
-        <?php if($user==$writer || $user==$admin) {
-          echo $user;
-          echo $writer;
-          echo $admin; ?>
+        <?php if($user==$writer || $user==$admin) {?>
           <button type="button" class="btn btn-secondary submit-btn__delete" onclick="location.href='process_delete.php?id=<?= $id ?>'">삭제</button>
           <button type="button" class="btn btn-secondary submit-btn__modify" onclick="location.href='modify.php?id=<?= $id ?>'">수정</button>
         <?php } ?>

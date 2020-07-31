@@ -12,7 +12,7 @@ $admin = "admin";
 $title = $_POST['title'];
 $content = $_POST['content'];
 $id = $_POST['id'];
-$sql = "UPDATE board SET title='".$title."', content='".$content."' WHERE id=$id and writer in ($writer, $admin)";
+$sql = "UPDATE board SET title='".$title."', content='".$content."' WHERE id=$id";
 $result = mysqli_query($conn, $sql);
 
 if($result === false){
