@@ -75,12 +75,14 @@ $writer = $board['writer'];
       <?php
         $comm_sql = "select user_id, comment, date from comment where board_id = (select id from board WHERE id=$id) order by no desc";
         $comm_stmh = $conn->query($comm_sql);
-              
+
         while ($row = $comm_stmh->fetch_assoc()) { ?>
           <b><?php echo $row['user_id']; ?></b>(<?php echo $row['date']; ?>)<br/>
           <?php echo $row['comment']; ?><br/>
+          <?php if($row['user_id']==$user|| $row['user_id']==$admin){ ?>
           <button type="button" class="comm-btn__mod btn btn-outline-secondary" onclick="location.href='comment/process_comm_modify.php'">수정</button>
           <button type="button" class="comm-btn__del btn btn-outline-secondary" onclick="location.href='comment/process_comm_delete.php'">삭제</button>
+          <?php } ?>
           <hr>
       <?php
         } 
