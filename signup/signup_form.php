@@ -15,8 +15,9 @@
   <div class="form-group">
     <label for="exampleInputEmail1">아이디*</label>
     <div class="id">
-      <input type="text" class="id__input form-control" name="memberId" placeholder="아이디" aria-describedby="emailHelp" required>
-      <button class="id-overlap__btn btn btn-outline-secondary" onclick="location.href='process_idOverlap.php'">중복검사</button>
+      <input type="text" id="inputId" class="id__input form-control" name="memberId" placeholder="아이디" aria-describedby="emailHelp" required>
+      <input type="button" value="아이디 중복검사"  class="id-overlap__btn btn btn-outline-secondary" onclick="checkid();">
+      <!-- <button onclick="window.open('process_idOverlap.php','아이디 중복검사', width=300, height=300, scrollbars=on">중복검사</button> -->
     </div>
   </div>
   <div class="form-group">
@@ -40,5 +41,16 @@
       <button type="submit" class="btn btn-secondary btn__submit">회원가입</button> 
 </div>
 </form>
+<script>
+  function checkid(){
+    var memid = document.getElementById("inputId").value;
+    if(memid){
+      url = "process_idOverlap.php?memid="+memid;
+      window.open(url,"아이디 중복체크", "width=300,height=100");
+    }else{
+      alert("아이디를 입력하세요.");
+    }
+  }
+</script>
 </body>
 </html>
