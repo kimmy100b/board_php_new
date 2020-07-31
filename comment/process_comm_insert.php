@@ -1,5 +1,5 @@
 <?php
- #댓글 창 
+ # 댓글 창 입력
 
     header('Content-Type: text/html; charset=utf-8');
 

@@ -70,27 +70,26 @@ $writer = $board['writer'];
       <input class="btn btn-outline-secondary comm__btn"  type="submit" id="button-addon2" value="입력" onclick="location.href='comment/process_comm_insert.php'">
     </div>
   </div>
-  </form>
   <div class="comm__view">
   <hr>
       <?php
-        $comm_sql = "select user_id, comment, date from comment where board_id = (select id from board WHERE id=$id) order by no desc";
+        $comm_sql = "select no, user_id, comment, date from comment where board_id = (select id from board WHERE id=$id) order by no desc";
         $comm_stmh = $conn->query($comm_sql);
 
         while ($row = $comm_stmh->fetch_assoc()) { ?>
+          <input type="hidden" value="<?php echo $row['no'];?>" name="com_no">
           <b><?php echo $row['user_id']; ?></b>(<?php echo $row['date']; ?>)<br/>
           <?php echo $row['comment']; ?><br/>
           <?php if($row['user_id']==$user|| $row['user_id']==$admin){ ?>
-          <button type="button" class="comm-btn__mod btn btn-outline-secondary" onclick="location.href='comment/process_comm_modify.php'">수정</button>
+          <button type="button" class="comm-btn__mod btn btn-outline-secondary" onclick="location.href='comment/comm_modify.php'">수정</button>
           <button type="button" class="comm-btn__del btn btn-outline-secondary" onclick="location.href='comment/process_comm_delete.php'">삭제</button>
           <?php } ?>
           <hr>
       <?php
         } 
-      ?>
-    
+      ?>    
    </div>
-
+   </form>
    </article>
 </body>
 </html>
