@@ -33,6 +33,6 @@ article {
 
 .comm-btn__mod,
 .comm-btn__del{
-    padding: 1px;
+    padding: 0px 2px 0px 2px;
     background-color: white;
 }

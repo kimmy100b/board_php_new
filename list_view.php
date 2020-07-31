@@ -61,13 +61,13 @@ $writer = $board['writer'];
    </article>
  
    <article class="comment">
-   <form action="process_comment.php" method="post">
+   <form action="comment/process_comm_insert.php" method="post">
    <input type="hidden" value="<?php echo $id;?>" name="id">
    <h5>댓글</h5>
    <div class="input-group mb-3">
     <input type="text" class="form-control" name="comm_content" placeholder="댓글을 작성하려면 로그인 해주세요." aria-label="Recipient's username" aria-describedby="button-addon2">
     <div class="input-group-append">
-      <button class="btn btn-outline-secondary comm__btn" type="button" id="button-addon2" onclick="location.href='process_comment.php'">입력</button>
+      <button class="btn btn-outline-secondary comm__btn" type="button" id="button-addon2" onclick="location.href='comment/process_comm_insert.php'">입력</button>
     </div>
   </div>
   <div class="comm__view">
@@ -79,8 +79,8 @@ $writer = $board['writer'];
         while ($row = $comm_stmh->fetch_assoc()) { ?>
           <b><?php echo $row['userid']; ?></b>(<?php echo $row['date']; ?>)<br/>
           <?php echo $row['comment']; ?><br/>
-          <button type="button" class="comm-btn__mod btn btn-outline-secondary" onclick="location.href='.php'">수정</button>
-          <button type="button" class="comm-btn__del btn btn-outline-secondary" onclick="location.href='.php'">삭제</button>
+          <button type="button" class="comm-btn__mod btn btn-outline-secondary" onclick="location.href='comment/process_comm_modify.php'">수정</button>
+          <button type="button" class="comm-btn__del btn btn-outline-secondary" onclick="location.href='comment/process_comm_delete.php'">삭제</button>
           <hr>
       <?php
         } 
