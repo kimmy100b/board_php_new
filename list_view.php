@@ -10,6 +10,7 @@ $user = $_SESSION['memberId'];
 $admin = "admin";
 
 $id = $_GET['id'];
+$file = $_POST['file'];
 $sql = "SELECT title, writer, content FROM board WHERE id=$id";
 //$board = $conn->query($sql);
 $result = mysqli_query($conn, $sql);
@@ -27,7 +28,7 @@ $writer = $board['writer'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/listViewStyle.css">
-    <title>Document</title>
+    <title>게시판</title>
 </head>
 <body>
     <article class="article">
@@ -44,6 +45,10 @@ $writer = $board['writer'];
      <tr>
       <td colspan="2" class="content"><?php echo $content; ?></td>
     </tr>
+    <tr>
+      <th scope="row" class="th-file">첨부파일</th>
+      <td colspan="2" class="content"><?php echo $fifle; ?></td>
+    </tr>
   </tbody>
 </table>
    <div class="col-auto submit submit-btn">
@@ -56,17 +61,23 @@ $writer = $board['writer'];
    </article>
  
    <article class="comment">
+   <form action="process_comment.php" method="post">
+   <input type="hidden" value="<?php echo $id;?>" name="id">
    <h5>댓글</h5>
    <div class="input-group mb-3">
-    <input type="text" class="form-control" name="comment_content" placeholder="댓글을 입력하세요." aria-label="Recipient's username" aria-describedby="button-addon2">
+    <input type="text" class="form-control" name="comm_content" placeholder="댓글을 입력하세요." aria-label="Recipient's username" aria-describedby="button-addon2">
     <div class="input-group-append">
-      <button class="btn btn-outline-secondary comment__btn" type="button" id="button-addon2">입력</button>
+      <button class="btn btn-outline-secondary comm__btn" type="button" id="button-addon2">입력</button>
     </div>
   </div>
    <hr>
-   <div class="comment__view">
+   <div class="comm__view">
      <p>댓글 내용</p>
+     <?php
+      // $comm_sql = "select (select count(no) from comment as a where a.board_id = b.id) as comm_cnt ,id, writer, title, content, reg_date from board as b order by id desc";
+     ?>
    </div>
+   </form>
    </article>
 </body>
 </html>

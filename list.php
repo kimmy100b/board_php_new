@@ -43,14 +43,7 @@ session_start();
         </tr>
       </thead>
       <?php
-      $sql = 'select id,writer, title, content, reg_date from board order by id';
-     /*  $sql = 'select (select count(no) from comment as a where a.board_id = b.id) as comm_cnt ,id, writer, title, content, reg_date from board as b order by id desc';
-      $stmh = $conn->query($sql);
-      $boardCount = $stmh->num_rows; 
-      <td><a href="list_view.php?id=<?= $row['id'] ?>"><?php echo $row['title']." [".$row['comm_cnt']."]"; ?></a></td>
-*/
-
-      $com_sql = 'select no from comment';
+      $sql = 'select (select count(no) from comment as a where a.board_id = b.id) as comm_cnt ,id, writer, title, content, reg_date from board as b order by id desc';
       $stmh = $conn->query($sql);
       $board_count = $stmh->num_rows;
       if ($board_count < 1) { ?>
@@ -62,7 +55,7 @@ session_start();
         <tr style="cursor:hand">
           <th scope="row"><?= $row['id'] ?></th>
           <td><?= $row['writer'] ?></td>
-          <td><a href="list_view.php?id=<?= $row['id'] ?>"><?= $row['title'] ?></a></td>
+          <td><a href="list_view.php?id=<?= $row['id'] ?>"><?php echo $row['title']." [".$row['comm_cnt']."]"; ?></a></td>
           <td><?= $row['content'] ?></td>
           <td><?= $row['reg_date'] ?></td>
         </tr>
