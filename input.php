@@ -1,9 +1,9 @@
 <?php
 # 회원가입 양식 폼
-
+header('Content-Type: text/html; charset=utf-8');
 session_start();
-?>
-
+$user=$_SESSION['memberId'];
+if(isset($user)){ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,10 +16,10 @@ session_start();
 <body>
 <form action="./process_insert.php" method="POST" >
     <?php 
-      if(isset($_SESSION['memberId'])){ ?>
+      if(isset($user)){ ?>
     <div class="form-group">
       <label for="exampleFormControlInput1">작성자</label>
-      <p> <?php echo $_SESSION['memberId']; ?> </p>
+      <p> <?php echo $user; ?> </p>
     </div>
     <?php
       }
@@ -37,5 +37,17 @@ session_start();
       <button type="submit" class="btn btn-secondary">제출</button>
     </div> 
 </form>
+
+<?php
+}
+else{
+?>
+<script>
+  alert("로그인하세요");
+  location.href="./login/login_form.php";
+</script>
+<?php
+}
+?>
 </body>
 </html>

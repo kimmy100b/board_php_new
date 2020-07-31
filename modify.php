@@ -1,8 +1,8 @@
 <?php
 # 게시물 내용 수정
-
 require_once 'DB.php';
 $conn = db_connect();
+
 $sql = "SELECT title, content FROM board WHERE id=$id";
 $id = $_GET['id'];
 $result = mysqli_query($conn, $sql);
