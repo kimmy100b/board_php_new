@@ -5,7 +5,7 @@
 
     session_start();
 
-    require_once 'DB.php';
+    require_once '../DB.php';
     $conn = db_connect();
 
     $user_id = $_SESSION['memberId'];
@@ -14,12 +14,19 @@
 
     if(isset($user_id)){
         $sql = "INSERT INTO comment(user_id, board_id, comment, date) VALUES ('".$user_id."', $board_id ,'".$comment."', now())";
-        $stmt = mysqli_query($conn, $sql);
-        
+        $stmt = mysqli_query($conn, $sql); 
+        echo $sql;
+        ?>
+        <script>
+            // history.back();
+        </script>
+    
+    <?php    
     } else{ ?>
         <script>
             alert("로그인하세요");
             history.back();
+            // location.href="login/login_form.php";
         </script>
 
     <?php
