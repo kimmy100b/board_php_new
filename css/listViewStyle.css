@@ -30,3 +30,9 @@ article {
     width: 15%;
     text-align: center;
 }
+
+.comm-btn__mod,
+.comm-btn__del{
+    padding: 1px;
+    background-color: white;
+}
