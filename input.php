@@ -35,7 +35,7 @@ if(isset($user)){ ?>
   </div>
   <div class="form-group">
     <label for="exampleFormControlFile1">첨부파일</label>
-    <input type="file" class="form-control-file" id="exampleFormControlFile">
+    <input type="file" name="fileToUpload" class="form-control-file" id="exampleFormControlFile">
   </div>
    <div class="col-auto submit">
       <button type="submit" class="btn btn-secondary">제출</button>

@@ -55,8 +55,20 @@ session_start();
         <tr style="cursor:hand">
           <th scope="row"><?= $row['id'] ?></th>
           <td><?= $row['writer'] ?></td>
-          <td><a href="list_view.php?id=<?= $row['id'] ?>"><?php echo $row['title']." [".$row['comm_cnt']."]"; ?></a></td>
-          <td><?= $row['content'] ?></td>
+          <?php 
+            $title = $row['title'];
+            if(strlen($title)>12){
+              $title = str_replace($row['title'], mb_substr($row['title'], 0, 12, "utf-8")."...",$row['title']);
+            }
+          ?>
+          <td><a href="list_view.php?id=<?= $row['id'] ?>"><?php echo $title." [".$row['comm_cnt']."]"; ?></a></td>
+          <?php
+            $content = $row['content'];
+            if(strlen($content)>33){
+              $content = str_replace($row['content'], mb_substr($row['content'],0,33,"utf-8")."...",$row['content']);
+            }
+          ?>
+          <td><?php echo $content; ?></td>
           <td><?= $row['reg_date'] ?></td>
         </tr>
       <?php }}
