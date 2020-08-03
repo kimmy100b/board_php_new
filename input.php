@@ -14,7 +14,7 @@ if(isset($user)){ ?>
     <title>게시물 작성</title>
 </head>
 <body>
-<form action="./process_insert.php" method="POST" >
+<form action="./process_insert.php" method="POST" enctype="multipart/form-data">
     <?php 
       if(isset($user)){ ?>
     <div class="form-group">

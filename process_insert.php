@@ -3,6 +3,8 @@
 header('Content-Type: text/html; charset=utf-8');
 
 session_start();
+print_r($_FILES);
+exit;
 
 require_once 'DB.php';
 $conn = db_connect();
