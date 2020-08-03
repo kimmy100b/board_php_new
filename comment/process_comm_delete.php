@@ -7,10 +7,11 @@
     require_once '../DB.php';
     $conn = db_connect();
 
-    $user_id = $_SESSION['memberId'];
-    $board_id = $_POST['id'];
-    $comment = $_POST['comm_content'];
-    $comm_no = $_POST['com_no'];
-
-    $sql = "DELETE FROM comment WHERE ";
+    $comm_no = $_GET['comm_no'];
+    
+    $sql = "DELETE FROM comment WHERE no = $comm_no";    
+    $result = mysqli_query($conn, $sql);
 ?>
+<script>
+    history.back();
+</script>

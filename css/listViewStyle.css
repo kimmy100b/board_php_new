@@ -36,3 +36,7 @@ article {
     padding: 0px 2px 0px 2px;
     background-color: white;
 }
+
+.comm__forms{
+    display: flex;
+}

@@ -72,24 +72,31 @@ $writer = $board['writer'];
   </div>
   <div class="comm__view">
   <hr>
+  </form>
       <?php
         $comm_sql = "select no, user_id, comment, date from comment where board_id = (select id from board WHERE id=$id) order by no desc";
         $comm_stmh = $conn->query($comm_sql);
 
         while ($row = $comm_stmh->fetch_assoc()) { ?>
-          <input type="hidden" value="<?php echo $row['no'];?>" name="com_no">
           <b><?php echo $row['user_id']; ?></b>(<?php echo $row['date']; ?>)<br/>
           <?php echo $row['comment']; ?><br/>
           <?php if($user==$row['user_id']|| $user==$admin){ ?>
-          <button type="button" class="comm-btn__mod btn btn-outline-secondary" onclick="location.href='comment/comm_modify.php'">수정</button>
-          <button type="button" class="comm-btn__del btn btn-outline-secondary" onclick="location.href='comment/process_comm_delete.php'">삭제</button>
+          <div class="comm__forms">
+          <form action="comment/process_comm_modify.php" mode="POST" class="comm__form">
+            <input type="hidden" value="<?php echo $row['no'];?>" name="comm_no">
+            <button type="submit" class="comm-btn__mod btn btn-outline-secondary">수정</button>
+          </form>
+          <form action="comment/process_comm_delete.php" mode="POST" class="comm_form">
+            <input type="hidden" value="<?php echo $row['no'];?>" name="comm_no">
+            <button type="submit" class="comm-btn__del btn btn-outline-secondary">삭제</button>
+          </form>
+          </div>
           <?php } ?>
           <hr>
       <?php
         } 
       ?>    
    </div>
-   </form>
    </article>
 </body>
 </html>
