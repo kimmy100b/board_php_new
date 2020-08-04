@@ -1,5 +1,6 @@
 <?php
 # 게시판 목록
+header('Content-Type: text/html; charset=utf-8');
 ?>
 <!DOCTYPE html>
 <?php
@@ -90,10 +91,7 @@ if(isset($_GET["page"])){
             if(strlen($title)>12){
               $title = str_replace($row['title'], mb_substr($row['title'], 0, 12, "utf-8")."...",$row['title']);
             }
-          ?>
-            
-
-          <?php
+    
             if(!empty($row['passwd'])){?>
             
               <td><a href="./passwd/passwd_form.php?id=<?= $row['id'] ?>"><?php echo $title." [".$row['comm_cnt']."]"; ?></a><i class='fas fa-lock'></i></td>    
@@ -110,8 +108,16 @@ if(isset($_GET["page"])){
             if(strlen($content)>33){
               $content = str_replace($row['content'], mb_substr($row['content'],0,33,"utf-8")."...",$row['content']);
             }
-          ?>
-          <td><?php echo $content; ?></td>
+            if(!empty($row['passwd'])){?>
+              <td><?php echo "비밀글입니다."; ?></td>            
+            <?php
+            } else{
+              ?>
+               <td><?php echo $content; ?></td>
+            <?php
+            }
+            ?>
+         
           <td><?= $row['reg_date'] ?></td>
         </tr>
       <?php }}
