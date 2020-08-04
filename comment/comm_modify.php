@@ -1,6 +1,6 @@
 <?php
 # 게시물 내용 수정
-require_once 'DB.php';
+require_once '../DB.php';
 $conn = db_connect();
 
 $sql = "SELECT comment FROM comment WHERE no=$comm_no";
@@ -16,6 +16,6 @@ $result = mysqli_query($conn, $sql);
     <title>Document</title>
 </head>
 <body>
-    
+
 </body>
 </html>
