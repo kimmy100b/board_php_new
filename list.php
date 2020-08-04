@@ -18,6 +18,7 @@ if(isset($_GET["page"])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/2a001071af.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="css/listStyle.css">
     <title>게시판 목차</title>
@@ -70,8 +71,7 @@ if(isset($_GET["page"])){
       $total_block = ceil($total_page/$block_cnt);
       $page_start = ($page-1)*$list;
 
-      // $sql = 'select (select count(no) from comment as a where a.board_id = b.id) as comm_cnt ,id, writer, title, content, reg_date from board as b order by id desc limit '.$page_start.', '.$list;
-      $sql = "select (select count(no) from comment as a where a.board_id = b.id) as comm_cnt ,id, writer, title, content, reg_date from board as b order by id desc limit $page_start, $list";
+      $sql = "select (select count(no) from comment as a where a.board_id = b.id) as comm_cnt ,id, writer, title, content, reg_date, passwd from board as b order by id desc limit $page_start, $list";
 
       $stmh = $conn->query($sql);
       $board_count = $stmh->num_rows;
@@ -83,15 +83,20 @@ if(isset($_GET["page"])){
         <?php } else { ?>
       <?php while ($row = $stmh->fetch_assoc()) { ?>
         <tr style="cursor:hand">
-          <th scope="row"><?= $row['id'] ?></th>
+          <th scope="row"><?php $id=$row['id']; echo $id; ?></th>
           <td><?= $row['writer'] ?></td>
           <?php 
             $title = $row['title'];
             if(strlen($title)>12){
-              $title = str_replace($row['title'], mb_substr($row['title'], 0, 12, "utf-8")."...",$row['title']);
-            }
+              $title = str_replace($row['title'], mb_substr($row['title'], 0, 12, "utf-8")."...",$row['title']);}
           ?>
-          <td><a href="list_view.php?id=<?= $row['id'] ?>"><?php echo $title." [".$row['comm_cnt']."]"; ?></a></td>
+            <td><a href="list_view.php?id=<?= $row['id'] ?>"><?php echo $title." [".$row['comm_cnt']."]"; ?></a>
+
+          <?php
+            if(!empty($row['passwd'])){
+              echo "<i class='fas fa-lock'></i>";
+            }?> </td>    
+          
           <?php
             $content = $row['content'];
             if(strlen($content)>33){
