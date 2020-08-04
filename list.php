@@ -88,14 +88,22 @@ if(isset($_GET["page"])){
           <?php 
             $title = $row['title'];
             if(strlen($title)>12){
-              $title = str_replace($row['title'], mb_substr($row['title'], 0, 12, "utf-8")."...",$row['title']);}
+              $title = str_replace($row['title'], mb_substr($row['title'], 0, 12, "utf-8")."...",$row['title']);
+            }
           ?>
-            <td><a href="list_view.php?id=<?= $row['id'] ?>"><?php echo $title." [".$row['comm_cnt']."]"; ?></a>
+            
 
           <?php
-            if(!empty($row['passwd'])){
-              echo "<i class='fas fa-lock'></i>";
-            }?> </td>    
+            if(!empty($row['passwd'])){?>
+            
+              <td><a href="./passwd/passwd_form.php?id=<?= $row['id'] ?>"><?php echo $title." [".$row['comm_cnt']."]"; ?></a><i class='fas fa-lock'></i></td>    
+            <?php
+            } else{
+              ?>
+              <td><a href="list_view.php?id=<?= $row['id'] ?>"><?php echo $title." [".$row['comm_cnt']."]"; ?></a> </td>    
+            <?php
+            }
+            ?>
           
           <?php
             $content = $row['content'];
