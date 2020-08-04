@@ -27,11 +27,16 @@ if(isset($user)){ ?>
 
   <div class="form-group">
     <label for="exampleFormControlInput1">제목</label>
-    <input type="text" name="title" class="form-control" id="exampleFormControlInput1" placeholder="제목을 입력하시오" required>
+    <input type="text" name="title" class="form-control" id="exampleFormControlInput1" placeholder="글 제목" required>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">비밀번호</label>
+    <!-- <input type="checkbox" name="chk_pw" vlaue="chk_pw">비밀번호</input>  -->
+    <input type="password" name="passwd" class="form-control" id="exampleFormControlInput1" placeholder="비밀글을 원하실 비밀번호를 입력해주세요">
   </div>
   <div class="form-group">
     <label for="exampleFormControlTextarea1">내용</label>
-    <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="4" required></textarea>
+    <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="글 내용" required></textarea>
   </div>
   <div class="form-group">
     <label for="exampleFormControlFile1">첨부파일</label>
