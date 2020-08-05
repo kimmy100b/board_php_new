@@ -28,15 +28,15 @@
         <a class="nav-link" href="../list.php">게시물</a>
     </li>
     <?php
-        if($user == $admin){ ?>
+        if($user == "admin"){ ?>
             <li class="nav-item">
-                <a class="nav-link" href="#">회원관리</a>
+                <a class="nav-link" href="manager.php">회원관리</a>
             </li>
         <?php
         }
     ?>
     <li class="nav-item">
-        <a class="nav-link active" href="#">정보수정</a>
+        <a class="nav-link active" href="mem_modify.php">정보수정</a>
     </li>
     </ul>
 

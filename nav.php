@@ -29,7 +29,7 @@ $admin = "admin"
     <?php
         if($user == $admin){ ?>
             <li class="nav-item">
-                <a class="nav-link" href="#">회원관리</a>
+                <a class="nav-link" href="member/manager.php"">회원관리</a>
             </li>
         <?php
         }
