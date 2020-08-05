@@ -1,4 +1,5 @@
 <?php
+# 회원정보를 수정하는 과정
     header('Content-Type: text/html; charset=utf-8');
     session_start();
    

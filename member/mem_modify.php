@@ -1,4 +1,5 @@
 <?php
+# 회원정보 수정 페이지
     require_once '../DB.php';
     $conn = db_connect();   
 
