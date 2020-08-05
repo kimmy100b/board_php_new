@@ -1,13 +1,17 @@
 <?php
-    require_once 'DB.php';
+    require_once '../DB.php';
     $conn = db_connect();   
 
     session_start();
     $user=$_SESSION['memberId'];
 
-    $sql = "SELECT passwd, name, tel, email, reg_date FROM WHERE id = $user";
+    $sql = "SELECT passwd, name, tel, email, reg_date FROM member WHERE id = '".$user."'";
     $result = mysqli_query($conn, $sql);
     $member = mysqli_fetch_array($result);
+
+    $name = $member['name'];
+    $tel = $member['tel'];
+    $email = $member['email'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,41 +40,31 @@
     </li>
     </ul>
 
-<form action="./process_signup.php" method="POST">
+<form action="process_mem_modify.php" method="POST">
   <div class="form-group">
-    <label for="exampleInputEmail1">아이디 : <?php echo $user;?></label>
+    <label for="exampleInputPassword1">아이디*</label>
+    <input type="text" id="inputId" class="form-control" name="memberId" value="<?= $user ?>" required disabled>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">비밀번호*</label>
-    <input type="password" class="form-control" name="memberPw" value="<?= $pw ?>"  required>
+    <input type="password" class="form-control" name="memberPw"  required>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">이름*</label>
-    <input type="text" class="form-control" name="memberName" required>
+    <input type="text" class="form-control" name="memberName" value="<?= $name ?>" required disabled>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">전화번호*</label>
-    <input type="text" class="form-control" name="memberTel" required>
+    <input type="text" class="form-control" name="memberTel" value="<?= $tel ?>" required>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">이메일*</label>
-    <input type="text" class="form-control" name="memberEmail" placeholder="example@email.com" required>
+    <input type="text" class="form-control" name="memberEmail" value="<?= $email ?>" required>
   </div>
   <div class="form-group btn-group">
       <button type="reset" class="btn btn-secondary btn__reset">재작성</button> 
-      <button type="submit" class="btn btn-secondary btn__submit">회원가입</button> 
+      <button type="submit" class="btn btn-secondary btn__submit">수정</button> 
 </div>
 </form>
-<script>
-  function checkid(){
-    var memid = document.getElementById("inputId").value;
-    if(memid){
-      url = "process_idOverlap.php?memid="+memid;
-      window.open(url,"아이디 중복체크", "width=300,height=100");
-    }else{
-      alert("아이디를 입력하세요.");
-    }
-  }
-</script>
 </body>
 </html>
