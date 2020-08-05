@@ -25,6 +25,9 @@ if(isset($_GET["page"])){
     <title>게시판 목차</title>
 </head>
 <body>
+<?php
+    include_once "./nav.php";
+  ?>
   <div class="login">
     <?php 
       if(isset($_SESSION['memberId'])){ ?>
@@ -39,6 +42,7 @@ if(isset($_GET["page"])){
       }
     ?>
   </div>
+
     <div class="list-table">
     <table class="table table-hover">
       <thead>

@@ -31,7 +31,6 @@ if(isset($user)){ ?>
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">비밀번호</label>
-    <!-- <input type="checkbox" name="chk_pw" vlaue="chk_pw">비밀번호</input>  -->
     <input type="password" name="passwd" class="form-control" id="exampleFormControlInput1" placeholder="비밀글을 원하실 비밀번호를 입력해주세요">
   </div>
   <div class="form-group">
@@ -40,7 +39,7 @@ if(isset($user)){ ?>
   </div>
   <div class="form-group">
     <label for="exampleFormControlFile1">첨부파일</label>
-    <input type="file" name="fileToUpload" class="form-control-file" id="exampleFormControlFile">
+    <input type="file" name="userfile" class="form-control-file" id="exampleFormControlFile">
   </div>
    <div class="col-auto submit">
       <button type="submit" class="btn btn-secondary">제출</button>
