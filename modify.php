@@ -9,6 +9,11 @@ $result = mysqli_query($conn, $sql);
 $board = mysqli_fetch_array($result);
 $title = strip_tags($board['title']);
 $content = strip_tags(nl2br($board['content']));
+
+$sql = "SELECT board_id, name, type FROM file WHERE board_id=$id";
+$result = mysqli_query($conn, $sql);
+$file = mysqli_fetch_array($result);
+$f_name = $file['name']; 
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +26,7 @@ $content = strip_tags(nl2br($board['content']));
     <title>Document</title>
 </head>
 <body>
-<form action="./process_modify.php" method="POST" >
+<form action="./process_modify.php" method="POST" enctype="multipart/form-data">
 <input type="hidden" value="<?php echo $_GET['id'];?>" name="id">
   <div class="form-group">
     <label for="exampleFormControlInput1">제목</label>
@@ -32,8 +37,12 @@ $content = strip_tags(nl2br($board['content']));
     <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="4" required>
     <?= $content ?></textarea>
   </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">첨부파일</label>
+    <p><?php echo $f_name; ?><button type="submit" class="btn-delete btn btn-outline-secondary">삭제</button></p>
+  </div>
    <div class="col-auto submit submit-btn">
-      <button type="submit" class="btn btn-secondary">수정</button>
+      <button type="submit" class="btn-submit btn btn-secondary">수정</button>
     </div> 
 </form>
 </body>

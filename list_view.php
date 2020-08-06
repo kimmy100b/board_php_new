@@ -20,7 +20,6 @@ $content = nl2br($board['content']);
 $writer = $board['writer'];
 
 $sql = "SELECT board_id, name, type FROM file WHERE board_id=$id";
-//$board = $conn->query($sql);
 $result = mysqli_query($conn, $sql);
 $file = mysqli_fetch_array($result);
 $f_name = $file['name']; 
