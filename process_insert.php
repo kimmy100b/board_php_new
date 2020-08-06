@@ -15,7 +15,6 @@ $title = $_POST['title'];
 $content = $_POST['content'];
 $passwd = $_POST['passwd'];
 
-
 if(empty($passwd)){
     $stmt = $conn->prepare('INSERT INTO board(writer, title, content, reg_date) VALUES(?,?, ?, now())');
     $stmt->bind_param('sss', $writer, $title, $content);
@@ -28,15 +27,15 @@ $stmt->execute();
 $sql = "SELECT id FROM board WHERE writer = '".$writer."' and title = '".$title."' and content = '".$content."'";
 $result = mysqli_query($conn, $sql);
 $board = mysqli_fetch_array($result);
-
 if(!empty($file)){
+    print_r($_FIFLES);
     $tmp_name = $_FILES["userfile"]["tmp_name"];
     $name = $_FILES["userfile"]["name"];
     $type = $_FILES["userfile"]["type"];
     $error = $_FILES["userfile"]["error"];
     $size = $_FILES["userfile"]["size"];
     move_uploaded_file($tmp_name, "$uploads_dir/$name");
-
+    
     if($error !=0){ ?>
         <script>
             alert("파일 업로드에 오류가 발생했습니다.");
@@ -44,7 +43,7 @@ if(!empty($file)){
     <?php  
     } else{
         // $sql = "INSERT INTO file(board_id, name, type, tmp, error, size) VALUES($board['id'],'".$name."','".$type."', '".$tmp_name."', $error, $size)";
-        $sql = "INSERT INTO file(board_id, name, type, tmp, error, size) VALUES($board['id'],'".$name."','".$type."', '".$tmp_name."', $error, $size)";
+        $sql = "INSERT INTO file(board_id, name, type, tmp, error, size) VALUES('".$board['id']."','".$name."','".$type."','".$tmp_name."','".$error."','".$size."')";
         $result = mysqli_query($conn, $sql);
     }
 }
