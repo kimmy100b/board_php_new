@@ -1,6 +1,13 @@
+body{
+    background-color: #EEEEEE;
+}
+
 form {
-    margin: 2% 2% 2% 2%;
-    width: 60%;
+    margin: 7% 29%;
+    padding: 5%;
+    width: 35%;
+    background-color: white;
+    border: #5A6268 2px solid;
 }
 
 .btn-group {
@@ -14,6 +21,11 @@ form {
 }
 
 .id__input{
-    width:90%;
+    width: 77%;
     display: inline-block;
+}
+
+.btn{
+    background: #0069D9;
+    border: none;
 }
