@@ -10,7 +10,7 @@ $user = $_SESSION['memberId'];
 $admin = "admin";
 
 $id = $_GET['id'];
-$file = $_POST['file'];
+
 $sql = "SELECT title, writer, content FROM board WHERE id=$id";
 //$board = $conn->query($sql);
 $result = mysqli_query($conn, $sql);
@@ -18,6 +18,12 @@ $board = mysqli_fetch_array($result);
 $title = $board['title'];
 $content = nl2br($board['content']);
 $writer = $board['writer'];
+
+$sql = "SELECT board_id, name, type FROM file WHERE board_id=$id";
+//$board = $conn->query($sql);
+$result = mysqli_query($conn, $sql);
+$file = mysqli_fetch_array($result);
+$f_name = $file['name']; 
 //$board = mysqli_fetch_row($stmt);
 ?>
 
@@ -47,7 +53,7 @@ $writer = $board['writer'];
     </tr>
     <tr>
       <th scope="row" class="th-file">첨부파일</th>
-      <td colspan="2" class="content"><?php echo $fifle; ?></td>
+      <td colspan="2" class="content"><a href="download.php?fname=<?= $f_name?>"><?php echo $f_name; ?></a></td>
     </tr>
   </tbody>
 </table>
@@ -65,7 +71,7 @@ $writer = $board['writer'];
    <input type="hidden" value="<?php echo $id;?>" name="id">
    <h5>댓글</h5>
    <div class="input-group mb-3">
-    <input type="text" class="form-control" name="comm_content" placeholder="댓글을 작성하려면 로그인 해주세요." aria-label="Recipient's username" aria-describedby="button-addon2">
+    <input type="text" class="form-control" name="comm_content" placeholder="댓글을 입력하세요." aria-label="Recipient's username" aria-describedby="button-addon2">
     <div class="input-group-append">
       <input class="btn btn-outline-secondary comm__btn"  type="submit" id="button-addon2" value="입력" onclick="location.href='comment/process_comm_insert.php'">
     </div>
