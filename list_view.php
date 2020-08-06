@@ -51,10 +51,16 @@ $f_name = $file['name'];
      <tr>
       <td colspan="2" class="content"><?php echo $content; ?></td>
     </tr>
-    <tr>
-      <th scope="row" class="th-file">첨부파일</th>
-      <td colspan="2" class="content"><a href="download.php?fname=<?= $f_name?>"><?php echo $f_name; ?></a></td>
-    </tr>
+    <?php
+      if(!is_null($f_name)){
+    ?>
+      <tr>
+        <th scope="row" class="th-file">첨부파일</th>
+        <td colspan="2" class="content"><a href="download.php?fname=<?= $f_name?>"><?php echo $f_name; ?></a></td>
+      </tr>
+    <?php
+      }
+    ?>
   </tbody>
 </table>
    <div class="col-auto submit submit-btn">
