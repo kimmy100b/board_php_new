@@ -28,7 +28,6 @@ $sql = "SELECT id FROM board WHERE writer = '".$writer."' and title = '".$title.
 $result = mysqli_query($conn, $sql);
 $board = mysqli_fetch_array($result);
 if(!empty($file)){
-    print_r($_FIFLES);
     $tmp_name = $_FILES["userfile"]["tmp_name"];
     $name = $_FILES["userfile"]["name"];
     $type = $_FILES["userfile"]["type"];
