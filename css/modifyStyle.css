@@ -3,15 +3,11 @@ form {
     width: 60%;
 }
 
-.submit-btn {
-    padding: 0px;
-}
-
 .btn-submit{
     float: right;
-    margin-right: 0px;
+    margin-right: 38%;
 }
 
 .btn-delete{
-    
+    padding: 0px;
 }

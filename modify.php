@@ -37,13 +37,31 @@ $f_name = $file['name'];
     <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="4" required>
     <?= $content ?></textarea>
   </div>
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">첨부파일</label>
-    <p><?php echo $f_name; ?><button type="submit" class="btn-delete btn btn-outline-secondary">삭제</button></p>
-  </div>
+ 
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">첨부파일</label>
+      <?php if(!is_null($f_name)){?>
+        <p><?php echo $f_name; ?><button class="btn-delete btn btn-outline-secondary" onclick="delFile()">삭제</button></p>
+      <? } else{?>
+        <!-- <button class="btn-delete btn btn-outline-secondary" onclick="">삽입</button></p> -->
+        <input type="file" name="userfile" class="form-control-file" id="exampleFormControlFile">
+      <?php } ?>
+    </div>
+  
    <div class="col-auto submit submit-btn">
-      <button type="submit" class="btn-submit btn btn-secondary">수정</button>
+      <input type="submit" class="btn-submit btn btn-secondary" value="수정"></button>
     </div> 
 </form>
+
+<script>
+  function delFile(){
+    unlink("../files/".$f_name);
+    <?php
+      $sql = "DELETE FROM file WHERE board_id=$id";
+      $result = mysqli_query($conn, $sql);
+    ?>
+  } 
+</script>
+
 </body>
 </html>
