@@ -93,7 +93,7 @@ $f_name = $file['name'];
           <?php echo $row['comment']; ?><br/>
           <?php if($user==$row['user_id']|| $user==$admin){ ?>
           <div class="comm__forms" style="display:flex">
-          <form action="comment/process_comm_modify.php" mode="POST" class="comm__form">
+          <form action="comment/comm_modify.php?id=<?=$id?>" mode="POST" class="comm__form">
             <input type="hidden" value="<?php echo $row['no'];?>" name="comm_no">
             <button type="submit" class="comm-btn__mod btn btn-outline-secondary">수정</button>
           </form>
