@@ -68,7 +68,31 @@
                                 <td><?php echo $member['tel'];?></td>
                                 <td><?php echo $member['email'];?></td>
                                 <td><?php echo $member['reg_date'];?></td>
-                                <td><?php echo $member['level'];?></td>
+                                <td>
+                                    <select name="level" form="levelForm">
+                                        <?php
+                                            switch($member['level']){
+                                                case 0: ?>
+                                                    <option value='0' selected>0</option>
+                                                    <option value='1'>1</option>
+                                                    <option value='2'>2</option>
+                                                    <?php break;
+                                                case 1: ?> 
+                                                    <option value='0'>0</option>
+                                                    <option value='1' selected>1</option>
+                                                    <option value='2'>2</option>
+                                                    <?php break;
+                                                case 2: ?> 
+                                                    <option value='0'>0</option>
+                                                    <option value='1'>1</option>
+                                                    <option value='2' selected>2</option>
+                                                    <?php break;
+                                                    }?>
+                                    </select>
+                                    <form action="process_level_modify.php" method="get" id="levelForm">
+                                        <input type="submit" value="수정"><br><br>
+                                    </form>  
+                                </td>
                             </tr>
                         <?php
                             $no--;
@@ -77,7 +101,6 @@
                 ?>
             </tbody>
         </table>
-
     </div>
 </body>
 </html>
