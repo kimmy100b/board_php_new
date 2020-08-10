@@ -14,6 +14,9 @@ if(isset($_GET["page"])){
 } else{
   $page = 1;
 }
+
+$search = $_GET['search_nav'];
+$search_content = $_GET['search__content'];
 ?>
 <html lang="en">
 <head>
@@ -30,6 +33,7 @@ if(isset($_GET["page"])){
     include_once "./nav.php";
   ?>
   <div class="login">
+    <button class="btn btn-outline-secondary btn-before" onclick="location.href='list.php'">이전</button>
     <?php 
       if(isset($_SESSION['memberId'])){ ?>
       <p class="login__msg"><?php echo $_SESSION['memberId'];?>님 안녕하세요  </p> <button class="btn btn-outline-secondary logout__btn" onclick="location.href='login/logout.php'">로그아웃</button>
@@ -56,29 +60,21 @@ if(isset($_GET["page"])){
         </tr>
       </thead>
       <?php     
-      $sql = 'select count(id) as total_cnt from board';
-      $stmh = $conn->query($sql);
-      $total_count = $stmh->fetch_assoc();
+      if(!is_null($search)){
+        $sql = "select count(id) as total_cnt from board where $search like '%$search_content%'";
+        $stmh = $conn->query($sql);
+        $total_count = $stmh->fetch_assoc();
+      } else{
+        $sql = "select count(id) as total_cnt from board where title like '%$search_content%' or writer like '%$search_content%' or content like '%$search_content%'";
+        $stmh = $conn->query($sql);
+        $total_count = $stmh->fetch_assoc();
+      } 
 
-      $list = 5;
-      $block_cnt = 5;
-      $block_num = ceil($page/$block_cnt);
-      $block_start = (($block_num-1)*$block_cnt) + 1;
-      $block_end = $block_start + $block_cnt - 1;
-      
-      $total_page = ceil($total_count['total_cnt']/$list);
-      if($block_end > $total_page){
-        $block_end = $total_page;
+      if(!is_null($search)){
+        $sql = "select (select count(no) from comment as a where a.board_id = b.id) as comm_cnt ,id, writer, title, content, reg_date, passwd from board as b where $search like '%$search_content%' order by id desc";
+      } else{
+        $sql = "select (select count(no) from comment as a where a.board_id = b.id) as comm_cnt ,id, writer, title, content, reg_date, passwd from board as b where title like '%$search_content%' or writer like '%$search_content%' or content like '%$search_content%' order by id desc";
       }
-      $total_block = ceil($total_count['total_cnt']/$list);
-      if($block_end>$total_page){
-        $block_end = $total_page;
-      }
-      $total_block = ceil($total_page/$block_cnt);
-      $page_start = ($page-1)*$list;
-
-      $sql = "select (select count(no) from comment as a where a.board_id = b.id) as comm_cnt ,id, writer, title, content, reg_date, passwd from board as b order by id desc limit $page_start, $list";
-
       $stmh = $conn->query($sql);
       $board_count = $stmh->num_rows;
 
@@ -132,36 +128,6 @@ if(isset($_GET["page"])){
           <button class="btn btn-secondary btn-enroll" onclick="location.href='input.php'">등록</button>
       </div> 
   </div>   
-  <div class="page-num" style="text-align: center;">
-    <?php
-      if($page<1){ // 빈 값
-      } else{
-          echo "<a href='list.php?page=1'>처음</a>";
-      }
-      if($page<1){// 빈 값
-      } else{
-        $pre = $page - 1;
-        echo "<a href='list.php?page=$pre'>◀ 이전</a>";
-      }
-      for($i = $block_start; $i <= $block_end; $i++){
-        if($page==$i){
-          echo "<b> $i </b>";
-        }else{
-          echo "<a href = 'list.php?page=$i'> $i </a>";
-        }
-      }
-
-      if($page >= $total_page){ //빈 값
-      } else{
-        $next = $page + 1;
-        echo "<a href='list.php?page=$next'>다음 ▶</a>";
-      }
-      if($page >= $total_page){// 빈 값
-      } else{
-        echo "<a href='list.php?page=$total_page'>마지막</a>";
-      } 
-      ?>
-  </div>
   <div class="search" style="margin:2% 20%;">
     <select name="search__nav" id="search__nav" class="form-control search__nav" form="searchForm">
       <option value="" selected>-선택-</option>

@@ -24,7 +24,9 @@
     width: 60%;
 }
 
-button {
+.login__btn, 
+.signup__btn,
+.btn-enroll{
     float: right;
 }
 
@@ -39,3 +41,16 @@ button {
 .page-num{
     text-align: center;
 }
+
+.search{
+    display: flex;
+}
+
+#search__nav{
+    width: 9%;
+}
+
+.btn-before{
+    margin-right:70%;
+}
+

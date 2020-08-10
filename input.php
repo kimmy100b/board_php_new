@@ -71,7 +71,6 @@ else{
       oAppRef: oEditors,
       elPlaceHolder: "ir1",
       sSkinURI: "./se2/SmartEditor2Skin.html",
-      // sSkinURI: "./smarteditor2/workspace/static/SmartEditor2Skin.html",
       fCreator: "createSEditor2"
   });
   function submitContents(elClickedObj) {
