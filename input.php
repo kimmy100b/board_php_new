@@ -15,7 +15,7 @@ if(isset($user)){ ?>
     <title>게시물 작성</title>
 </head>
 <body>
-<form action="./process_insert.php" method="POST" enctype="multipart/form-data">
+<form id="form" action="./process_insert.php" method="POST" enctype="multipart/form-data">
     <?php 
       if(isset($user)){ ?>
     <div class="form-group">
@@ -46,7 +46,7 @@ if(isset($user)){ ?>
     <input type="file" name="userfile" class="form-control-file" id="exampleFormControlFile">
   </div>
    <div class="col-auto submit">
-      <button type="submit" class="btn btn-secondary" onclick="submitContents()">제출</button>
+      <input id="saveBtn" type="submit" class="btn btn-secondary" onclick="submitContents(this)" value="제출">
     </div> 
 </form>
 
@@ -82,7 +82,7 @@ else{
     // document.getElementById("ir1").value를 이용해서 처리한다.
 
     try {
-        elClickedObj.form.submit();
+      elClickedObj.form.submit();
     } catch(e) {}
   }
 </script>
