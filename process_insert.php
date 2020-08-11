@@ -40,8 +40,7 @@ if(!empty($file)){
     }
 
     move_uploaded_file($tmp_name, "{$uploads_dir}/{$board['id']}/{$name}");
-    echo $error;
-    exit;
+
     if($error !=0){ ?>
         <script>
             alert("파일 업로드에 오류가 발생했습니다.");

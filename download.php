@@ -9,18 +9,18 @@ $conn = db_connect();
 
 $user = $_SESSION['memberId'];
 
-$target_Dir = "./files/";
+$target_Dir = "./files";
 $id = $_GET['id'];
 $file = $_GET['fname'];
 
-$down = $target_Dir.$file;
+$down = "{$target_Dir}/{$id}/{$file}";
 $filesize = filesize($down);
 
 if(file_exists($down)){
   header("Content-Type:application/octet-stream");
   header("Content-Disposition:attachment;filename=$file");
   header("Content-Transfer-Encoding:binary");
-  header("Content-Length:".filesize($target_Dir.$file));
+  header("Content-Length:".filesize($down));
   header("Cache-Control:cache,must-revalidate");
   header("Pragma:no-cache");
   header("Expires:0");
