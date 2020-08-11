@@ -10,6 +10,7 @@ $conn = db_connect();
 $user = $_SESSION['memberId'];
 
 $target_Dir = "./files/";
+$id = $_GET['id'];
 $file = $_GET['fname'];
 
 $down = $target_Dir.$file;

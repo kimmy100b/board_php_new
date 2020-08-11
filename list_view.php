@@ -56,7 +56,7 @@ $f_name = $file['name'];
     ?>
       <tr>
         <th scope="row" class="th-file">첨부파일</th>
-        <td colspan="2" class="content"><a href="download.php?fname=<?= $f_name?>"><?php echo $f_name; ?></a></td>
+        <td colspan="2" class="content"><a href="download.php?fname=<?= $f_name?>&id=<?=$id?>"><?php echo $f_name; ?></a></td>
       </tr>
     <?php
       }
