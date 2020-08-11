@@ -24,7 +24,13 @@ if(!empty($file)){
   $type = $_FILES["userfile"]["type"];
   $error = $_FILES["userfile"]["error"];
   $size = $_FILES["userfile"]["size"];
-  move_uploaded_file($tmp_name, "$uploads_dir/$name");
+
+  if(!is_dir("{$uploads_dir}/{$board['id']}")){
+    mkdir("{$uploads_dir}/{$board['id']}",0777,true);
+  }else{
+  }
+
+  move_uploaded_file($tmp_name, "{$uploads_dir}/{$board['id']}/{$name}");
   
   if($error !=0){ ?>
       <script>

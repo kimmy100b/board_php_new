@@ -56,7 +56,7 @@ $f_name = $file['name'];
 
 <script>
   function delFile(){
-    unlink("../files/".$f_name);
+    unlink("./files/<?=$id?>/<?=$f_name?>");
     <?php
       $sql = "DELETE FROM file WHERE board_id=$id";
       $result = mysqli_query($conn, $sql);
