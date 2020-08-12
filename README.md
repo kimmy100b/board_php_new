@@ -20,7 +20,7 @@ PHP, mySQL을 이용하여 만든 게시판 프로젝트입니다.
 ## 개발환경 
 - 개발환경 : Windows 10 Enterprise x64
 - 개발도구 : VScode, github, HeidiSQL
-- 구성환경 : HTML, CSS, PHP
+- 구성환경 : HTML, CSS, PHP 7.4.8, bootstrap 4 이용
 
 ## 실행 스크린 샷
 

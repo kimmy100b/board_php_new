@@ -27,6 +27,11 @@ $stmt->execute();
 $sql = "SELECT id FROM board WHERE writer = '".$writer."' and title = '".$title."' and content = '".$content."'";
 $result = mysqli_query($conn, $sql);
 $board = mysqli_fetch_array($result);
+/*
+for($i=0;$i<count($_FILES['userfile'];$i++){
+
+}
+*/
 if(!empty($file)){
     $tmp_name = $_FILES["userfile"]["tmp_name"];
     $name = $_FILES["userfile"]["name"];

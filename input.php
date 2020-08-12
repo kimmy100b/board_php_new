@@ -39,11 +39,15 @@ if(isset($user)){ ?>
     <!-- <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="글 내용" required></textarea> -->
     <textarea name="content" id="ir1" rows="10" cols="100"> </textarea>
      
-   
   </div>
   <div class="form-group">
     <label for="exampleFormControlFile1">첨부파일</label>
-    <input type="file" name="userfile" class="form-control-file" id="exampleFormControlFile">
+    <input type="file" name="userfile" class="form-control-file" id="exampleFormControlFile1">
+    <!--
+    <input type="file" name="userfile[]" class="form-control-file" id="exampleFormControlFile2">
+    <input type="file" name="userfile[]" class="form-control-file" id="exampleFormControlFile3">
+    <input type="file" name="userfile[]" class="form-control-file" id="exampleFormControlFile4">
+    -->
   </div>
    <div class="col-auto submit">
       <input id="saveBtn" type="submit" class="btn btn-secondary" onclick="submitContents(this)" value="제출">
