@@ -70,10 +70,28 @@ $search_content = $_GET['search__content'];
         $total_count = $stmh->fetch_assoc();
       } 
 
+      $list = 5;
+      $block_cnt = 5;
+      $block_num = ceil($page/$block_cnt);
+      $block_start = (($block_num-1)*$block_cnt) + 1;
+      $block_end = $block_start + $block_cnt - 1;
+      
+      $total_page = ceil($total_count['total_cnt']/$list);
+      if($block_end > $total_page){
+        $block_end = $total_page;
+      }
+      $total_block = ceil($total_count['total_cnt']/$list);
+      if($block_end>$total_page){
+        $block_end = $total_page;
+      }
+      $total_block = ceil($total_page/$block_cnt);
+      $page_start = ($page-1)*$list;
+
+
       if(!is_null($search)){
-        $sql = "select (select count(no) from comment as a where a.board_id = b.id) as comm_cnt ,id, writer, title, content, reg_date, passwd from board as b where $search like '%$search_content%' order by id desc";
+        $sql = "select (select count(no) from comment as a where a.board_id = b.id) as comm_cnt ,id, writer, title, content, reg_date, passwd from board as b where $search like '%$search_content%' order by id desc limit $page_start, $list";
       } else{
-        $sql = "select (select count(no) from comment as a where a.board_id = b.id) as comm_cnt ,id, writer, title, content, reg_date, passwd from board as b where title like '%$search_content%' or writer like '%$search_content%' or content like '%$search_content%' order by id desc";
+        $sql = "select (select count(no) from comment as a where a.board_id = b.id) as comm_cnt ,id, writer, title, content, reg_date, passwd from board as b where title like '%$search_content%' or writer like '%$search_content%' or content like '%$search_content%' order by id desc limit $page_start, $list";
       }
       $stmh = $conn->query($sql);
       $board_count = $stmh->num_rows;
@@ -128,6 +146,38 @@ $search_content = $_GET['search__content'];
           <button class="btn btn-secondary btn-enroll" onclick="location.href='input.php'">등록</button>
       </div> 
   </div>   
+  <div class="page-num" style="text-align: center;">
+    <?php
+      if($page<1){ // 빈 값
+      } else{ ?>
+        <a href="search-list.php?page=1&search__nav=<?=$search?>&search__content=<?=$search_content?>">처음</a>
+      <?PHP
+        echo "<a href='search-list.php?page=1&search__nav=$search&search__content=$search_content'>처음</a>";
+      }
+      if($page<1){// 빈 값
+      } else{
+        $pre = $page - 1;
+        echo "<a href='search-list.php?page=$pre&search__nav=$search&search__content=$search_content'>◀ 이전</a>";
+      }
+      for($i = $block_start; $i <= $block_end; $i++){
+        if($page==$i){
+          echo "<b> $i </b>";
+        }else{
+          echo "<a href = 'search-list.php?page=$i&search__nav=$search&search__content=$search_content'> $i </a>";
+        }
+      }
+
+      if($page >= $total_page){ //빈 값
+      } else{
+        $next = $page + 1;
+        echo "<a href='search-list.php?page=$next'>다음 ▶</a>";
+      }
+      if($page >= $total_page){// 빈 값
+      } else{
+        echo "<a href='search-list.php?page=$total_page'>마지막</a>";
+      } 
+      ?>
+  </div>
   <div class="search" style="margin:2% 20%;">
     <select name="search__nav" id="search__nav" class="form-control search__nav" form="searchForm">
       <option value="" selected>-선택-</option>
