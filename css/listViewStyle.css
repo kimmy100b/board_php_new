@@ -40,3 +40,12 @@ article {
 .comm__forms{
     display: flex;
 }
+
+.move{
+    margin: 2% 2% 0% 2%;
+    width: 60%;
+}
+
+.move__next{
+    float: right;
+}
