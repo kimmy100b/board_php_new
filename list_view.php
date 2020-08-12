@@ -26,6 +26,10 @@ $result = mysqli_query($conn, $sql);
 $file = mysqli_fetch_array($result);
 $f_name = $file['name']; 
 //$board = mysqli_fetch_row($stmt);
+
+/* $sql_cnt = "SELECT count(id) FROM board";
+$result_cnt = mysqli_query($conn, $sql);
+$total_cnt = mysqli_fetch_array($result_cnt); */
 ?>
 
 <!DOCTYPE html>
