@@ -68,7 +68,13 @@
                                 <td><?php echo $member['tel'];?></td>
                                 <td><?php echo $member['email'];?></td>
                                 <td><?php echo $member['reg_date'];?></td>
-                                <td><?php echo $member['level'];?></td>
+                                <td>
+                                    <?php if($member['level']==0){
+                                        echo "관리자";
+                                    }else if($member['level']==1){
+                                        echo "일반회원";
+                                    }?>
+                                </td>
                             </tr>
                         <?php
                             $no--;
