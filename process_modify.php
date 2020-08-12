@@ -10,9 +10,11 @@ $conn = db_connect();
 $writer = $_SESSION['memberId'];
 $admin = "admin";
 $title = $_POST['title'];
-$content = $_POST['content'];
+//$content = $_POST['content'];
+$content = htmlspecialchars($_POST['content'],ENT_QUOTES);
+
 $id = $_POST['id'];
-$sql = "UPDATE board SET title='".$title."', content='".$content."' WHERE id=$id";
+$sql = "UPDATE board SET title='".$title."', content='".$content."' WHERE id='".$id."'";
 $result = mysqli_query($conn, $sql);
 
 $uploads_dir = "./files";
@@ -26,7 +28,7 @@ if(!empty($file)){
   $size = $_FILES["userfile"]["size"];
 
   if(!is_dir("{$uploads_dir}/{$board['id']}")){
-    mkdir("{$uploads_dir}/{$board['id']}",0777,true);
+    mkdir("{$uploads_dir}/{$board['id']}",0707,true);
   }else{
   }
 

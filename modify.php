@@ -36,7 +36,7 @@ $f_name = $file['name'];
   <div class="form-group">
     <label for="exampleFormControlTextarea1">내용</label>
     <!-- <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="4" required> -->
-    <textarea name="content" id="ir1" rows="10" cols="100"><?= $content ?></textarea>
+    <textarea name="content" id="ir1" rows="10" cols="100"><?php echo $content; ?></textarea>
   </div>
  
     <div class="form-group">
@@ -50,7 +50,7 @@ $f_name = $file['name'];
     </div>
   
    <div class="col-auto submit submit-btn">
-      <input type="submit" class="btn-submit btn btn-secondary" value="수정"></button>
+      <input id="saveBtn" type="submit" class="btn-submit btn btn-secondary" onclick="submitContents(this)" value="수정"></button>
     </div> 
 </form>
 
@@ -71,7 +71,6 @@ $f_name = $file['name'];
       oAppRef: oEditors,
       elPlaceHolder: "ir1",
       sSkinURI: "./se2/SmartEditor2Skin.html",
-      // sSkinURI: "./smarteditor2/workspace/static/SmartEditor2Skin.html",
       fCreator: "createSEditor2"
   });
   function submitContents(elClickedObj) {
