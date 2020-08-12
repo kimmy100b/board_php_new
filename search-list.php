@@ -15,7 +15,7 @@ if(isset($_GET["page"])){
   $page = 1;
 }
 
-$search = $_GET['search_nav'];
+$search = $_GET['search__nav'];
 $search_content = $_GET['search__content'];
 ?>
 <html lang="en">
@@ -47,7 +47,9 @@ $search_content = $_GET['search__content'];
       }
     ?>
   </div>
-
+  <div class="search">
+    <h4 class="search__content">"<?=$search_content?>"로 검색한 결과입니다.</h4>
+  </div>
     <div class="list-table">
     <table class="table table-hover">
       <thead>
@@ -149,9 +151,7 @@ $search_content = $_GET['search__content'];
   <div class="page-num" style="text-align: center;">
     <?php
       if($page<1){ // 빈 값
-      } else{ ?>
-        <a href="search-list.php?page=1&search__nav=<?=$search?>&search__content=<?=$search_content?>">처음</a>
-      <?PHP
+      } else{ 
         echo "<a href='search-list.php?page=1&search__nav=$search&search__content=$search_content'>처음</a>";
       }
       if($page<1){// 빈 값
@@ -170,11 +170,11 @@ $search_content = $_GET['search__content'];
       if($page >= $total_page){ //빈 값
       } else{
         $next = $page + 1;
-        echo "<a href='search-list.php?page=$next'>다음 ▶</a>";
+        echo "<a href='search-list.php?page=$next&search__nav=$search&search__content=$search_content'>다음 ▶</a>";
       }
       if($page >= $total_page){// 빈 값
       } else{
-        echo "<a href='search-list.php?page=$total_page'>마지막</a>";
+        echo "<a href='search-list.php?page=$total_page&search__nav=$search&search__content=$search_content'>마지막</a>";
       } 
       ?>
   </div>
