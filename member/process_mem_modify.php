@@ -8,11 +8,12 @@
 
     $user=$_SESSION['memberId'];
     $pw = $_POST['memberPw'];
+    $pw_hash = hash("sha256", $pw);
     $name = $_POST['memberName'];
     $tel = $_POST['memberTel'];
     $email = $_POST['memberEmail'];
 
-    $sql = "UPDATE member SET passwd = '".$pw."', tel='".$tel."', email = '".$email."' WHERE id= '".$user."'";
+    $sql = "UPDATE member SET passwd = '".$pw_hash."', tel='".$tel."', email = '".$email."' WHERE id= '".$user."'";
     $result = mysqli_query($conn, $sql);
 
     if($result){ ?>

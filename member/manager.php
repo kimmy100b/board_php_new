@@ -90,6 +90,7 @@
                                                     }?>
                                     </select>
                                     <form action="process_level_modify.php" method="get" id="levelForm">
+                                        <input type="hidden" value="<?=$member['id']?>" name="id">
                                         <input type="submit" value="수정"><br><br>
                                     </form>  
                                 </td>

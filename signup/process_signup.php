@@ -7,6 +7,7 @@ $conn = db_connect();
 
 $id = $_POST["memberId"];
 $pw = $_POST["memberPw"];
+$pw_hash = hash("sha256", $pw);
 $name = $_POST["memberName"];
 $tel = $_POST['memberTel'];
 $email = $_POST['memberEmail'];
@@ -23,7 +24,7 @@ if($idmember !=0){
 </script>
 <?php
 } else{
-$sql = "INSERT INTO member(id, passwd, name, tel, email, reg_date, level) VALUES('".$id."', '".$pw."', '".$name."', '".$tel."', '".$email."',now(), 1)";
+$sql = "INSERT INTO member(id, passwd, name, tel, email, reg_date, level) VALUES('".$id."', '".$pw_hash ."', '".$name."', '".$tel."', '".$email."',now(), 1)";
 $result = mysqli_query($conn, $sql);
 header('Location: signup_result.php');}
 
