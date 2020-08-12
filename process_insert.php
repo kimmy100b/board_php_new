@@ -12,7 +12,7 @@ $file = $_FILES['userfile']['tmp_name'];
 
 $writer = $_SESSION['memberId'];
 $title = $_POST['title'];
-$content = $_POST['content'];
+$content = htmlspecialchars($_POST['content'],ENT_QUOTES);
 $passwd = $_POST['passwd'];
 
 if(empty($passwd)){

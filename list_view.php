@@ -16,7 +16,8 @@ $sql = "SELECT title, writer, content FROM board WHERE id=$id";
 $result = mysqli_query($conn, $sql);
 $board = mysqli_fetch_array($result);
 $title = $board['title'];
-$content = $board['content'];
+$content = htmlspecialchars_decode($board['content']);
+// $content = strip_tags($board['content']);
 // $content = nl2br($board['content']);
 $writer = $board['writer'];
 
@@ -49,7 +50,7 @@ $f_name = $file['name'];
       <td><?php echo $writer; ?></td>
     </tr>
      <tr>
-      <td colspan="2" class="content"><?php echo '<pre>'; echo $content; echo '</pre>';?></td>
+      <td colspan="2" class="content"><?php echo $content;?></td>
     </tr>
     <?php
       if(!is_null($f_name)){
