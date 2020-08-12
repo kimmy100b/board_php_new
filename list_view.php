@@ -26,8 +26,6 @@ $result = mysqli_query($conn, $sql);
 $file = mysqli_fetch_array($result);
 $f_name = $file['name']; 
 //$board = mysqli_fetch_row($stmt);
-
-echo time();
 ?>
 
 <!DOCTYPE html>
