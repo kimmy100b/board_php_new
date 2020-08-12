@@ -112,7 +112,7 @@ if(isset($_GET["page"])){
             //$content = $row['content'];
             $content = strip_tags(htmlspecialchars_decode($row['content']));
             if(strlen($content)>33){
-              $content = str_replace($row['content'], mb_substr($row['content'],0,33,"utf-8")."...",$row['content']);
+              $content = str_replace($content, mb_substr($content,0,33,"utf-8")."...", $content);
             }
             if(!empty($row['passwd'])){?>
               <td><?php echo "비밀글입니다."; ?></td>            
