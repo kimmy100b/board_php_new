@@ -109,8 +109,8 @@ if(isset($_GET["page"])){
             ?>
           
           <?php
-            $content = htmlspecialchars_decode($row['content']);
-            //$content = strip_tags(htmlspecialchars_decode($row['content']));
+            //$content = $row['content'];
+            $content = strip_tags(htmlspecialchars_decode($row['content']));
             if(strlen($content)>33){
               $content = str_replace($row['content'], mb_substr($row['content'],0,33,"utf-8")."...",$row['content']);
             }

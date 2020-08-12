@@ -26,6 +26,8 @@ $result = mysqli_query($conn, $sql);
 $file = mysqli_fetch_array($result);
 $f_name = $file['name']; 
 //$board = mysqli_fetch_row($stmt);
+
+echo time();
 ?>
 
 <!DOCTYPE html>
@@ -38,6 +40,10 @@ $f_name = $file['name'];
     <title>게시판</title>
 </head>
 <body>
+    <div class="move">
+      <a href="list_view.php?id=<?= ($id-1) ?> ">< 이전 게시물</a>
+      <a href="list_view.php?id=<?= ($id+1) ?>">다음 게시물 ></a>
+    </div>
     <article class="article">
     <table class="table table-bordered">
   <tbody>
