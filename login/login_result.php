@@ -8,10 +8,11 @@
     $mem_id = $_POST["memberId"];
     $mem_pw = $_POST["memberPw"];
     $chbox = $_REQUEST["chbox"];
-
+    $pw_hash = hash("sha256",$mem_pw);
+ 
     if(isset($chbox)){ //isset는 안에 변수가 설정되어있는 지 확인, 설정되어있으면 true, 설정 안 되어있으면 false
         $a = setcookie("memberId", $mem_id, time()+60*60*60);
-        $b = setcookie("memberPw", $mem_pw,time()+60*60*60);
+        $b = setcookie("memberPw",$pw_hash,time()+60*60*60);
     }
 
     $sql = "SELECT id, passwd, name FROM member WHERE id='".$mem_id."'";
@@ -21,7 +22,7 @@
     if(mysqli_num_rows($result)==1){
         $row = mysqli_fetch_assoc($result);
 
-        if($row['passwd']==$mem_pw){
+        if($row['passwd']==$pw_hash){
             $_SESSION["memberId"]= $mem_id;
             if(isset($_SESSION['memberId'])){
             ?>
