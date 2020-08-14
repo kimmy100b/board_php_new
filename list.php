@@ -45,8 +45,10 @@ if(isset($_GET["page"])){
       $stmh = $conn->query($sql);
       $total_count = $stmh->fetch_assoc();
 
-      $list = 5;
+      $list = 10;
+      // 한 페이지에 보여지는 list 수
       $block_cnt = 5;
+      // 페이지 숫자
       $block_num = ceil($page/$block_cnt);
       $block_start = (($block_num-1)*$block_cnt) + 1;
       $block_end = $block_start + $block_cnt - 1;
