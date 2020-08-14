@@ -1,12 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/2a001071af.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/index.css">
     <title>Document</title>
 </head>
+
 <body>
-    <h2>게시물 구현</h2>
-    <a href="list.php">목차로 이동</a>
+    <nav>
+        <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">게시판</a></li>
+            <li><a href="#">마이페이지</a></li>
+        </ul>
+        <div class="button">
+            <a class="btn-open" href="#"></a>
+        </div>
+        </nav>
+        <div class="overlay">
+            <div class="wrap">
+                <ul class="wrap-nav">
+                    <li><a href="#">About</a>
+                    <ul>
+                        <li><a href="#">About Company</a></li>
+                        <li><a href="#">Designers</a></li>
+                        <li><a href="#">Developers</a></li>
+                        <li><a href="#">Pets</a></li>
+                    </ul>
+                    </li>
+                    <li><a href="#">Services</a>
+                    <ul>
+                        <li><a href="https://www.google.hr/">Web Design</a></li>
+                        <li><a href="#">Development</a></li>
+                        <li><a href="#">Apps</a></li>
+                        <li><a href="#">Graphic design</a></li>
+                        <li><a href="#">Branding</a></li>
+                    </ul>
+                    </li>
+                    <li><a href="#">Work</a>
+                    <ul>
+                        <li><a href="#">Web</a></li>
+                        <li><a href="#">Graphic</a></li>
+                        <li><a href="#">Apps</a></li>
+                    </ul>
+                    </li>
+                </ul>
+                <div class="social">
+                    <a href="http://mario-loncarek.from.hr/">
+                    <div class="social-icon">
+                        <i class="fa fa-facebook"></i>
+                    </div>
+                    </a>
+                    <a href="#">
+                    <div class="social-icon">
+                        <i class="fa fa-twitter"></i>
+                    </div>
+                    </a>
+                    <a href="#">
+                    <div class="social-icon">
+                        <i class="fa fa-codepen"></i>
+                    </div>
+                    </a>
+                    <a href="#">
+                    <div class="social-icon">
+                        <i class="fa fa-behance"></i>
+                    </div>
+                    </a>
+                    <a href="#">
+                    <div class="social-icon">
+                        <i class="fa fa-dribbble"></i>
+                    </div>
+                    </a>
+                    <p>
+                        From: Zagreb, Croatia<br>
+                         Site: <a href="http://mario-loncarek.from.hr/">mario-loncarek.from.hr</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+
+        </div>
 </body>
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="js/index.js"></script>
 </html>
