@@ -1,9 +1,7 @@
 <?php
 # 게시판 목록
 header('Content-Type: text/html; charset=utf-8');
-?>
-<!DOCTYPE html>
-<?php
+
 require_once 'DB.php';
 $conn = db_connect();
 
@@ -14,7 +12,9 @@ if(isset($_GET["page"])){
 } else{
   $page = 1;
 }
+
 ?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -27,24 +27,9 @@ if(isset($_GET["page"])){
 </head>
 <body>
 <?php
-    include_once "./nav.php";
-  ?>
-  <div class="login">
-    <?php 
-      if(isset($_SESSION['memberId'])){ ?>
-      <p class="login__msg"><?php echo $_SESSION['memberId'];?>님 안녕하세요  </p> <button class="btn btn-outline-secondary logout__btn" onclick="location.href='login/logout.php'">로그아웃</button>
-
-    <?php
-      }else{
-        ?>
-      <button class="btn btn-outline-secondary login__btn" onclick="location.href='login/login_form.php'">로그인</button>
-      <button class="btn btn-outline-secondary signup__btn" onclick="location.href='signup/signup_form.php'">회원가입</button>
-    <?php
-      }
-    ?>
-  </div>
-
-    <div class="list-table">
+  include "index.php";
+?>
+  <div class="list-table">
     <table class="table table-hover">
       <thead>
         <tr>

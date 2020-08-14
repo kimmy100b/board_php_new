@@ -13,13 +13,27 @@
     <nav>
         <ul>
             <li><a href="#">About</a></li>
-            <li><a href="#">게시판</a></li>
+            <li><a href="list.php">게시판</a></li>
             <li><a href="#">마이페이지</a></li>
         </ul>
+        <div class="login">
+            <?php 
+            if(isset($_SESSION['memberId'])){ ?>
+            <p class="login__msg"><?php echo $_SESSION['memberId'];?>님 안녕하세요  </p> <button class="btn btn-outline-secondary logout__btn" onclick="location.href='login/logout.php'">로그아웃</button>
+
+            <?php
+            }else{
+                ?>
+            <a href="login/login_form.php">로그인</a>
+            <a href="signup/signup_form.php">회원가입</a>
+            <?php
+            }
+            ?>
+        </div>
         <div class="button">
             <a class="btn-open" href="#"></a>
         </div>
-        </nav>
+    </nav>
         <div class="overlay">
             <div class="wrap">
                 <ul class="wrap-nav">
@@ -80,9 +94,6 @@
                     </p>
                 </div>
             </div>
-        </div>
-        <div class="content">
-
         </div>
 </body>
 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
