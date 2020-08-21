@@ -1,11 +1,17 @@
+<?php
+header('Content-Type: text/html; charset=utf-8');
+// DB연동
+include_once "DB.php";
+$DB = new DB();
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/2a001071af.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/components/header.css">
     <title>Document</title>
 </head>
 
@@ -14,7 +20,16 @@
         <ul>
             <li><a href="#">About</a></li>
             <li><a href="list.php">게시판</a></li>
+            <!-- TODO : 로그인했을때만 -->
             <li><a href="#">마이페이지</a></li>
+            <?php
+            if($user == $admin){ ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"">회원관리</a>
+                </li>
+            <?php
+        }
+    ?>
         </ul>
         <div class="login">
             <?php 

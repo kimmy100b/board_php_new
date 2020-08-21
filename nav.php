@@ -25,14 +25,7 @@ $admin = "admin"
     <li class="nav-item">
         <a class="nav-link active" href="#">게시물</a>
     </li>
-    <?php
-        if($user == $admin){ ?>
-            <li class="nav-item">
-                <a class="nav-link" href="member/manager.php"">회원관리</a>
-            </li>
-        <?php
-        }
-    ?>
+    
     <li class="nav-item">
         <a class="nav-link" href="member/mem_modify.php">정보수정</a>
     </li>
