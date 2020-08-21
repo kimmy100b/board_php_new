@@ -20,21 +20,21 @@ $DB = new DB();
         <ul>
             <li><a href="#">About</a></li>
             <li><a href="list.php">게시판</a></li>
-            <!-- TODO : 로그인했을때만 -->
+            <?php if(isset($_SESSION['memberId'])){ ?>
             <li><a href="#">마이페이지</a></li>
-            <?php
-            if($user == $admin){ ?>
+                <!-- TODO : 관리자만 사용할 수 있는 권한으로 바꾸기 -->
+                <?php if($user == $admin){ ?>
                 <li class="nav-item">
                     <a class="nav-link" href="#"">회원관리</a>
                 </li>
-            <?php
-        }
-    ?>
+                <?php
+                }
+            }?>
         </ul>
         <div class="login">
             <?php 
-            if(isset($_SESSION['memberId'])){ ?>
-            <p class="login__msg"><?php echo $_SESSION['memberId'];?>님 안녕하세요  </p> <button class="btn btn-outline-secondary logout__btn" onclick="location.href='login/logout.php'">로그아웃</button>
+            if(isset($_SESSION['userId'])){ ?>
+            <p class="login__msg"><?php echo $_SESSION['userId'];?>님 안녕하세요  </p> <button class="btn btn-outline-secondary logout__btn" onclick="location.href='login/logout.php'">로그아웃</button>
 
             <?php
             }else{
