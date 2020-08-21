@@ -1,0 +1,26 @@
+.write-content {
+  padding: 5% 10%;
+}
+
+.write_form:not(.write_not_setting) {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.write_not_setting {
+  display: inline;
+}
+
+.write_form label {
+  width: 9%;
+  font-size: medium;
+}
+
+.form_file {
+  display: inline;
+}
+
+.submit {
+  float: right;
+  padding-right: 0px;
+}

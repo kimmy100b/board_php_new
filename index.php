@@ -1,14 +1,11 @@
-<?php
-# 메인 화면
-
-// DB연동
-// require_once "DB.php";
-// $conn = db_connect();
-
-session_start();
-
-include "include/header.php";
-?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
 <body>
-<h1>메인화면</h1>  
+    <a href="http://dev.mxweb.kr:8438/main/main.php">메인화면으로 가기</a>
 </body>
+</html>

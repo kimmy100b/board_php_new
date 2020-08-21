@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
 // DB연동
-include_once "DB.php";
+include_once "../DB.php";
 $DB = new DB();
 ?>
 <!DOCTYPE html>
@@ -11,7 +11,7 @@ $DB = new DB();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/2a001071af.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/components/header.css">
+    <link rel="stylesheet" href="../css/index.css">
     <title>Document</title>
 </head>
 
