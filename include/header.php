@@ -2,7 +2,7 @@
 header('Content-Type: text/html; charset=utf-8');
 // DB연동
 include_once "../DBconnect.php";
-$DB = new DB();
+$DB = new DBconnect();
 ?>
 <!DOCTYPE html>
 <html lang="ko">

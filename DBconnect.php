@@ -1,6 +1,6 @@
 <?php
 # DB연결 소스코드
-class DB
+class DBconnect
 {
     var $conn;
     var $user = 'i_test';
@@ -10,11 +10,11 @@ class DB
     var $type = 'mysql';
 
     //기본 생성자를 이용해서 DB를 불러와준다
-    function DB(){
-        $this->db_connect();
+    function DBconnect(){
+        $this->loadDB();
     }
 
-    function db_connect()
+    function loadDB()
     {
         $db_user = 'i_test';
         $db_pass = 'i_test123#';
