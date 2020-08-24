@@ -3,7 +3,7 @@
 #게시물 삽잎 삭제
 header('Content-Type: text/html; charset=utf-8');
 // DB연동
-include_once "../DB.php";
+include_once "../DBconnect.php";
 $DB = new DB();
 
 //$conn = mysqli_connect($host, $user, $passwd, $name);

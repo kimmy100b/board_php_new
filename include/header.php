@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
 // DB연동
-include_once "../DB.php";
+include_once "../DBconnect.php";
 $DB = new DB();
 ?>
 <!DOCTYPE html>
@@ -20,7 +20,7 @@ $DB = new DB();
     <nav>
         <ul>
             <li><a href="#">About</a></li>
-            <li><a href="list.php">게시판</a></li>
+            <li><a href="../board/list.php">게시판</a></li>
             <?php if(isset($_SESSION['memberId'])){ ?>
             <li><a href="#">마이페이지</a></li>
                 <!-- TODO : 관리자만 사용할 수 있는 권한으로 바꾸기 -->

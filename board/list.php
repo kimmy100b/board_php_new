@@ -30,40 +30,42 @@ if(isset($_GET["page"])){
           </tr>
         </thead>
         <?php     
-        $sql = 'select count(board_sid) as total_cnt from board';
-        $stmh = $conn->query($sql);
-        $total_count = $stmh->fetch_assoc();
-  
+        //페이징하는 기능
+        $total_cnt_sql = 'select board_sid from board';
+        $total_cnt_data = mysqli_query($conn, $total_cnt_sql);
+        $total_cnt = mysqli_num_rows($total_cnt_data);
+      
         $list = 5;
         $block_cnt = 5;
         $block_num = ceil($page/$block_cnt);
         $block_start = (($block_num-1)*$block_cnt) + 1;
         $block_end = $block_start + $block_cnt - 1;
         
-        $total_page = ceil($total_count['total_cnt']/$list);
+        $total_page = ceil($total_cnt/$list);
         if($block_end > $total_page){
           $block_end = $total_page;
         }
-        $total_block = ceil($total_count['total_cnt']/$list);
+        $total_block = ceil($total_cnt/$list);
         if($block_end>$total_page){
           $block_end = $total_page;
         }
         $total_block = ceil($total_page/$block_cnt);
         $page_start = ($page-1)*$list;
-  
-        $sql = "select (select count(comment_sid) from comment as a where a.board_sid = b.board_sid) as comm_cnt ,board_sid, writer, title, content, register_date, passwd from board as b order by id desc limit $page_start, $list";
+        
+        //목차에 출력할 데이터 select
+        // $sql = "SELECT (SELECT COUNT(comment_sid) FROM comment AS a where a.board_sid = b.board_sid) AS comm_cnt ,board_sid, writer, title, content, register_date, passwd FROM board AS b ORDER BY board_sid DESC LIMIT $page_start, $list";
+        $sql = "SELECT board_sid, writer, title, passwd, content, register_date  FROM board AS b ORDER BY board_sid DESC LIMIT $page_start, $list";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_array($result);
 
-        $stmh = $conn->query($sql);
-        $board_count = $stmh->num_rows;
-  
-        if ($board_count < 1) { ?>
+        if ($total_cnt < 1) { ?>
           <td colspan="4">
           <p class="no-board">게시물이 없습니다.</p>
           </td>
           <?php } else { ?>
-        <?php while ($row = $stmh->fetch_assoc()) { ?>
-          <tr style="cursor:hand">
-            <th scope="row"><?php $id=$row['id']; echo $id; ?></th>
+        <?php while ($row) { ?>
+          <tr>
+            <th scope="row"><?php $id=$row['board_sid']; echo $id; ?></th>
             <td><?= $row['writer'] ?></td>
             <?php 
               $title = $row['title'];
@@ -77,7 +79,7 @@ if(isset($_GET["page"])){
               <?php
               } else{
                 ?>
-                <td><a href="list_view.php?id=<?= $row['id'] ?>"><?php echo $title." [".$row['comm_cnt']."]"; ?></a> </td>    
+                <td><a href="list_view.php?id=<?= $row['board_sid'] ?>"><?php echo $title." [".$row['comm_cnt']."]"; ?></a> </td>    
               <?php
               }
               ?>
@@ -98,13 +100,13 @@ if(isset($_GET["page"])){
               }
               ?>
            
-            <td><?= $row['reg_date'] ?></td>
+            <td><?= $row['register_date'] ?></td>
           </tr>
         <?php }}
         ?>
           </table>
           <div class="col-auto input input-btn">
-            <button class="btn btn-secondary btn-enroll" onclick="location.href='input.php'">등록</button>
+            <button class="btn btn-secondary btn-enroll" onclick="location.href='write.php'">등록</button>
         </div> 
     </div>   
     <div class="page-num" style="text-align: center;">

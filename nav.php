@@ -4,7 +4,7 @@ header('Content-Type: text/html; charset=utf-8');
 ?>
 <!DOCTYPE html>
 <?php
-require_once 'DB.php';
+require_once 'DBconnect.php';
 $conn = db_connect();
 
 session_start();

@@ -1,7 +1,7 @@
 <?php
 #게시물 작업하는 함수 모음
 header('Content-Type: text/html; charset=utf-8');
-include_once "../DB.php";
+include_once "../DBconnect.php";
 $DB = new DB();
 
 class board{
