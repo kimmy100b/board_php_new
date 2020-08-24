@@ -1,0 +1,36 @@
+.list-table {
+  margin: 0% 2% 2% 2%;
+  width: 60%;
+}
+
+.btn-enroll {
+  float: right;
+}
+
+.no-board {
+  text-align: center;
+}
+
+.input-btn {
+  padding: 0px;
+}
+
+.page-num {
+  text-align: center;
+}
+
+.search {
+  display: flex;
+}
+
+#search__nav {
+  width: 9%;
+}
+
+.btn-before {
+  margin-right: 70%;
+}
+
+.search__content {
+  margin: 1% 0% 1% 2%;
+}

@@ -4,7 +4,8 @@
 @import "components/header.css";
 
 /* screens css */
-@import "screens/write.css";
+@import "screens/board_write.css";
+@import "screens/board_list.css";
 
 body {
   font-family: "Noto Sans KR", sans-serif;

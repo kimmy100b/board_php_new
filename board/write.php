@@ -8,6 +8,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="ko">
   <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>게시물 작성</title>
 </head>
 <body>
@@ -33,7 +34,6 @@ session_start();
             </div>
             <div class="write_form write_not_setting">
                 <label for="content">내용</label>
-          <!-- <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="글 내용" required></textarea> -->
                 <textarea name="content" id="ir1" rows="20" cols="219"> </textarea>
             </div>
             <div class="write_form write_not_setting">
@@ -50,18 +50,6 @@ session_start();
             </div> 
         </form>
     </div>
-      <?php
-      // }
-      /* else{
-      ?>
-      <script>
-        alert("로그인하세요");
-        location.href="./login/login_form.php";
-      </script>
-      <?php
-      } */
-      ?>
-
 <script type="text/javascript" src="../se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript">
   var oEditors = [];
