@@ -1,9 +1,9 @@
 body {
-	background: #eee !important;	
+  background: #eee !important;
 }
 
-.wrapper {	
-	margin-top: 80px;
+.wrapper {
+  margin-top: 80px;
   margin-bottom: 80px;
 }
 
@@ -12,7 +12,7 @@ body {
   padding: 15px 35px 45px;
   margin: 0 auto;
   background-color: #fff;
-  border: 1px solid rgba(0,0,0,0.1);  
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .form-signin-heading,
@@ -30,7 +30,7 @@ body {
 }
 
 input[type="text"] {
-  margin-bottom: -1px;
+  margin-bottom: 10px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
@@ -39,10 +39,10 @@ input[type="password"] {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-h2{
-    margin-bottom: 15px;
+h2 {
+  margin-bottom: 15px;
 }
 
-.btn{
-    margin-top:15px;
+.btn {
+  margin-top: 15px;
 }

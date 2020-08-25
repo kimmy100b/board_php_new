@@ -78,12 +78,12 @@ if(isset($_GET["page"])){
               }
       
               if(!empty($row['passwd'])){?>
-              
-                <td><a href="./passwd/passwd_form.php?id=<?= $row['id'] ?>"><?php echo $title." [".$row['comm_cnt']."]"; ?></a><i class='fas fa-lock'></i></td>    
+              <!-- TODO : 비밀번호 입력 페이지 -->
+                <td><a href="./passwd/passwd_form.php?board_sid=<?= $row['board_sid'] ?>"><?php echo $title." [".$row['comm_cnt']."]"; ?></a><i class='fas fa-lock'></i></td>    
               <?php
               } else{
                 ?>
-                <td><a href="list_view.php?id=<?= $row['board_sid'] ?>"><?php echo $title." [".$row['comm_cnt']."]"; ?></a> </td>    
+                <td><a href="view.php?board_sid=<?= $row['board_sid'] ?>"><?php echo $title." [".$row['comm_cnt']."]"; ?></a> </td>    
               <?php
               }
               ?>

@@ -40,8 +40,8 @@ $DB = new DBconnect();
             <?php
             }else{
                 ?>
-            <a href="../user/login.php">로그인</a>
-            <a href="../user/join.php">회원가입</a>
+            <a href="../member/login.php">로그인</a>
+            <a href="../member/join.php">회원가입</a>
             <?php
             }
             ?>
