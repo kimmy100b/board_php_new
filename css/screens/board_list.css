@@ -1,36 +1,33 @@
-.list-table {
-  margin: 0% 2% 2% 2%;
-  width: 60%;
+.board-list {
+  margin: 3% 2% 2% 2%;
 }
 
-.btn-enroll {
-  float: right;
-}
-
-.no-board {
+.board-no {
   text-align: center;
 }
 
-.input-btn {
+.enroll {
   padding: 0px;
 }
 
-.page-num {
+.enroll-btn {
+  float: right;
+}
+
+.board-page {
   text-align: center;
+  margin-bottom: 10px;
 }
 
 .search {
   display: flex;
+  justify-content: center;
 }
 
-#search__nav {
-  width: 9%;
+.search-opt {
+  width: 89px;
 }
 
-.btn-before {
+/* .btn-before {
   margin-right: 70%;
-}
-
-.search__content {
-  margin: 1% 0% 1% 2%;
-}
+} */

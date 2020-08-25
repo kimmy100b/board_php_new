@@ -18,7 +18,7 @@ if(isset($_GET["page"])){
       <title>게시판 목차</title>
   </head>
   <body>
-    <div class="list-table">
+    <div class="board-list">
       <table class="table table-hover">
         <thead>
           <tr>
@@ -31,11 +31,15 @@ if(isset($_GET["page"])){
         </thead>
         <?php     
         //페이징하는 기능
+
+        //게시물 전체 개수 구하는 SQL
         $total_cnt_sql = 'select board_sid from board';
         $total_cnt_data = mysqli_query($conn, $total_cnt_sql);
+        //게시물 전체 개수
         $total_cnt = mysqli_num_rows($total_cnt_data);
-      
-        $list = 5;
+
+        //한 화면에 보여줄 게시물 개수
+        $list = 10;
         $block_cnt = 5;
         $block_num = ceil($page/$block_cnt);
         $block_start = (($block_num-1)*$block_cnt) + 1;
@@ -52,20 +56,20 @@ if(isset($_GET["page"])){
         $total_block = ceil($total_page/$block_cnt);
         $page_start = ($page-1)*$list;
         
-        //목차에 출력할 데이터 select
-        // $sql = "SELECT (SELECT COUNT(comment_sid) FROM comment AS a where a.board_sid = b.board_sid) AS comm_cnt ,board_sid, writer, title, content, register_date, passwd FROM board AS b ORDER BY board_sid DESC LIMIT $page_start, $list";
-        $sql = "SELECT board_sid, writer, title, passwd, content, register_date  FROM board AS b ORDER BY board_sid DESC LIMIT $page_start, $list";
+        //게시판 리스트에 출력할 데이터들 SQL
+        $sql = "SELECT (SELECT COUNT(comment_sid) FROM comment AS a where a.board_sid = b.board_sid) AS comm_cnt ,board_sid, writer, title, content, register_date, passwd FROM board AS b ORDER BY board_sid DESC LIMIT $page_start, $list";
         $result = mysqli_query($conn, $sql);
-        $row = mysqli_fetch_array($result);
+        //게시판 목차 숫자
+        $index = $total_cnt/$page;
 
         if ($total_cnt < 1) { ?>
           <td colspan="4">
-          <p class="no-board">게시물이 없습니다.</p>
+          <p class="board-no">게시물이 없습니다.</p>
           </td>
           <?php } else { ?>
-        <?php while ($row) { ?>
+        <?php while ($row = mysqli_fetch_array($result)) { ?>
           <tr>
-            <th scope="row"><?php $id=$row['board_sid']; echo $id; ?></th>
+            <th scope="row"><?php echo $index; $index = $index-1; ?></th>
             <td><?= $row['writer'] ?></td>
             <?php 
               $title = $row['title'];
@@ -105,11 +109,11 @@ if(isset($_GET["page"])){
         <?php }}
         ?>
           </table>
-          <div class="col-auto input input-btn">
-            <button class="btn btn-secondary btn-enroll" onclick="location.href='write.php'">등록</button>
+          <div class="enroll">
+            <button class="btn btn-secondary enroll-btn" onclick="location.href='write.php'">등록</button>
         </div> 
     </div>   
-    <div class="page-num" style="text-align: center;">
+    <div class="board-page">
       <?php
         if($page<1){ // 빈 값
         } else{
@@ -139,15 +143,16 @@ if(isset($_GET["page"])){
         } 
         ?>
     </div>
-    <div class="search" style="margin:2% 20%;">
-      <select name="search__nav" id="search__nav" class="form-control search__nav" form="searchForm">
+    <div class="search">
+      <select name="search-opt" id="search-opt" class="form-control search-opt" form="searchForm">
         <option value="" selected>-선택-</option>
         <option value="writer">작성자</option>
         <option value="title">제목</option>
         <option value="content">내용</option>
       </select>
+      <!-- TODO : search-list만들기 -->
       <form action="search-list.php" method="GET" class="search" id="searchForm">
-        <input type="text" class="form-control search__input" id="search__input" placeholder="Search" name="search__content">
+        <input type="text" class="form-control search-input" id="search-input" placeholder="Search" name="search-content">
         <div class="input-group-append">
           <button class="btn btn-outline-secondary" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
         </div>
