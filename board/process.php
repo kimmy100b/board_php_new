@@ -4,7 +4,7 @@
 header('Content-Type: text/html; charset=utf-8');
 // DB연동
 include_once "../DBconnect.php";
-$DB = new DB();
+$DBconnect = new DBconnect();
 
 //$conn = mysqli_connect($host, $user, $passwd, $name);
 $uploads_dir = "../board_files";
@@ -55,6 +55,8 @@ switch($_GET['mode']){
         }
     break;
 }
+
+echo "안녕";
 
 header('Location: list.php');
 ?>
