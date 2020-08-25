@@ -3,6 +3,7 @@ header('Content-Type: text/html; charset=utf-8');
 // DB연동
 include_once "../DBconnect.php";
 $DB = new DBconnect();
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -35,7 +36,8 @@ $DB = new DBconnect();
         <div class="login">
             <?php 
             if(isset($_SESSION['userId'])){ ?>
-            <p class="login__msg"><?php echo $_SESSION['userId'];?>님 안녕하세요  </p> <button class="btn btn-outline-secondary logout__btn" onclick="location.href='login/logout.php'">로그아웃</button>
+            <p class="login__msg"><?php echo $_SESSION['userId'];?>님 안녕하세요  </p> 
+            <button class="btn btn-outline-secondary btn-logout" onclick="location.href='login/logout.php'">로그아웃</button>
 
             <?php
             }else{
