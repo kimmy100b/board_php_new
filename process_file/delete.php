@@ -6,7 +6,7 @@ session_start();
 require_once '../DBconnect.php';
 $conn = db_connect();
 
-$user = $_SESSION['memberId'];
+$user = $_SESSION['userId'];
 
 $id = $_GET['id'];
 

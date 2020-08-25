@@ -1,39 +1,40 @@
 <?php
+# 회원가입 화면
     session_start();
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/signupFormStyle.css">
+    <link rel="stylesheet" href="../css/screens/join.css">
     <title>회원가입</title>
 </head>
 <body>
-<form action="./process_signup.php" method="POST">
+<form action="./join_process.php" method="POST">
   <div class="form-group">
-    <label for="exampleInputEmail1">아이디*</label>
+    <label for="id">아이디*</label>
     <div class="id">
-      <input type="text" id="inputId" class="id__input form-control" name="userId" placeholder="아이디" aria-describedby="emailHelp" required>
+      <input type="text" id="userId" class="form-control" name="userId" placeholder="아이디" aria-describedby="emailHelp" required>
       <input type="button" value="중복검사"  class="id-overlap__btn btn btn-secondary" onclick="checkid();">
     </div>
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">비밀번호*</label>
-    <input type="password" class="form-control" name="userPw" required>
+    <label for="pw">비밀번호*</label>
+    <input type="password" class="form-control" name="userPw"  minlength="6" required>
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">이름*</label>
+    <label for="name">이름*</label>
     <input type="text" class="form-control" name="userName" required>
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">전화번호*</label>
+    <label for="phone">전화번호*</label>
     <input type="text" class="form-control" name="userTel" required>
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">이메일*</label>
-    <input type="text" class="form-control" name="userEmail" placeholder="example@email.com" required>
+    <label for="email">이메일*</label>
+    <input type="email" class="form-control" name="userEmail" placeholder="example@email.com" required>
   </div>
   <div class="form-group btn-group">
       <button type="reset" class="btn btn-secondary btn-reset">재작성</button> 
@@ -42,9 +43,10 @@
 </form>
 <script>
   function checkid(){
-    var userid = document.getElementById("inputId").value;
-    if(userid){
-      url = "process_idOverlap.php?userid="+userid;
+    var userId = document.getElementById("userId").value;
+    var checkId = false;
+    if(userId){
+      url = "idOverlap.php?userId="+userId;
       window.open(url,"아이디 중복체크", "width=300,height=100");
     }else{
       alert("아이디를 입력하세요.");

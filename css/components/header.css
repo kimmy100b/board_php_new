@@ -209,11 +209,15 @@ nav ul li a:hover {
 
 .login {
   position: absolute;
-  right: 100px;
+  right: 92px;
   top: 19px;
 }
 
 .login p,
 .login a {
   font-size: small;
+}
+
+.login a {
+  margin-left: 8px;
 }

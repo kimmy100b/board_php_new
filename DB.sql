@@ -8,7 +8,7 @@ CREATE TABLE `board` (
 	`register_date` DATE NOT NULL COMMENT '등록일',
 	`modify_date` DATE NOT NULL COMMENT '수정일',
 	PRIMARY KEY (`board_sid`) USING BTREE,
-	INDEX `FK_board_member` (`writer`) USING BTREE
+	INDEX `FK_board_user` (`writer`) USING BTREE
 )
 COLLATE='latin1_swedish_ci'
 ENGINE=MyISAM

@@ -153,7 +153,7 @@ if(isset($_GET["page"])){
       <!-- TODO : search-list만들기 -->
       <form action="search-list.php" method="GET" class="search" id="searchForm">
         <input type="text" class="form-control search-input" id="search-input" placeholder="Search" name="search-content">
-          <button class="btn btn-outline-secondary" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
+          <button class="btn btn-outline-secondary search-btn" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
       </form>
     </div>
   </body>

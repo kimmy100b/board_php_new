@@ -5,17 +5,17 @@
     require_once '../DBconnect.php';
     $conn = db_connect();
 
-    $mem_id = $_POST["memberId"];
-    $mem_pw = $_POST["memberPw"];
+    $mem_id = $_POST["userId"];
+    $mem_pw = $_POST["userPw"];
     $chbox = $_REQUEST["chbox"];
     $pw_hash = hash("sha256",$mem_pw);
  
     if(isset($chbox)){ //isset는 안에 변수가 설정되어있는 지 확인, 설정되어있으면 true, 설정 안 되어있으면 false
-        $a = setcookie("memberId", $mem_id, time()+60*60*60);
-        $b = setcookie("memberPw",$pw_hash,time()+60*60*60);
+        $a = setcookie("userId", $mem_id, time()+60*60*60);
+        $b = setcookie("userPw",$pw_hash,time()+60*60*60);
     }
 
-    $sql = "SELECT id, passwd, name FROM member WHERE id='".$mem_id."'";
+    $sql = "SELECT id, passwd, name FROM user WHERE id='".$mem_id."'";
     $result = mysqli_query($conn, $sql);
     
     //아이디가 있다면 비밀번호 검사
@@ -23,8 +23,8 @@
         $row = mysqli_fetch_assoc($result);
 
         if($row['passwd']==$pw_hash){
-            $_SESSION["memberId"]= $mem_id;
-            if(isset($_SESSION['memberId'])){
+            $_SESSION["userId"]= $mem_id;
+            if(isset($_SESSION['userId'])){
             ?>
              <script>
                 alert("로그인되었습니다.");

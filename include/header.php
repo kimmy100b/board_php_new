@@ -21,7 +21,7 @@ $DB = new DBconnect();
         <ul>
             <li><a href="#">About</a></li>
             <li><a href="../board/list.php">게시판</a></li>
-            <?php if(isset($_SESSION['memberId'])){ ?>
+            <?php if(isset($_SESSION['userId'])){ ?>
             <li><a href="#">마이페이지</a></li>
                 <!-- TODO : 관리자만 사용할 수 있는 권한으로 바꾸기 -->
                 <?php if($user == $admin){ ?>
@@ -40,8 +40,8 @@ $DB = new DBconnect();
             <?php
             }else{
                 ?>
-            <a href="login/login_form.php">로그인</a>
-            <a href="signup/signup_form.php">회원가입</a>
+            <a href="../user/login.php">로그인</a>
+            <a href="../user/join.php">회원가입</a>
             <?php
             }
             ?>

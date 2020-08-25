@@ -9,7 +9,7 @@ $conn = db_connect();
 
 session_start();
 
-$user=$_SESSION['memberId'];
+$user=$_SESSION['userId'];
 $admin = "admin"
 ?>
 <!DOCTYPE html>
@@ -27,7 +27,7 @@ $admin = "admin"
     </li>
     
     <li class="nav-item">
-        <a class="nav-link" href="member/mem_modify.php">정보수정</a>
+        <a class="nav-link" href="user/mem_modify.php">정보수정</a>
     </li>
     </ul>
 </body>
