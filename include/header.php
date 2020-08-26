@@ -37,7 +37,7 @@ session_start();
             <?php 
             if(isset($_SESSION['userId'])){ ?>
             <p class="login__msg"><?php echo $_SESSION['userId'];?>님 안녕하세요  </p> 
-            <button class="btn btn-outline-secondary btn-logout" onclick="location.href='login/logout.php'">로그아웃</button>
+            <a href="../member/logout.php">로그아웃</a>
 
             <?php
             }else{

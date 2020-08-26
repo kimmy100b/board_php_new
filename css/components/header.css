@@ -208,6 +208,7 @@ nav ul li a:hover {
 }
 
 .login {
+  display: flex;
   position: absolute;
   right: 92px;
   top: 19px;
