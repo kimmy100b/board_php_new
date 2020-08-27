@@ -60,8 +60,8 @@ if(isset($_GET["page"])){
         $sql = "SELECT (SELECT COUNT(comment_sid) FROM comment AS a where a.board_sid = b.board_sid) AS comm_cnt ,board_sid, writer, title, content, register_date, passwd FROM board AS b ORDER BY board_sid DESC LIMIT $page_start, $list";
         $result = mysqli_query($conn, $sql);
         //게시판 목차 숫자
-        $index = $total_cnt/$page;
-
+        $index = $total_cnt - (10*($page-1));
+      
         if ($total_cnt < 1) { ?>
           <td colspan="4">
           <p class="board-no">게시물이 없습니다.</p>
