@@ -15,7 +15,7 @@
   <div class="form-group">
     <label for="exampleInputEmail1">아이디*</label>
     <div class="id">
-      <input type="text" id="inputId" class="id__input form-control" name="userId" placeholder="아이디" aria-describedby="emailHelp" required>
+      <input type="text" id="inputId" class="id__input form-control" name="user_id" placeholder="아이디" aria-describedby="emailHelp" required>
       <input type="button" value="중복검사"  class="id-overlap__btn btn btn-secondary" onclick="checkid();">
     </div>
   </div>
@@ -25,7 +25,7 @@
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">이름*</label>
-    <input type="text" class="form-control" name="userName" required>
+    <input type="text" class="form-control" name="user_name" required>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">전화번호*</label>
@@ -33,7 +33,7 @@
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">이메일*</label>
-    <input type="text" class="form-control" name="userEmail" placeholder="example@email.com" required>
+    <input type="text" class="form-control" name="user_email" placeholder="example@email.com" required>
   </div>
   <div class="form-group btn-group">
       <button type="reset" class="btn btn-secondary btn-reset">재작성</button> 
@@ -42,9 +42,9 @@
 </form>
 <script>
   function checkid(){
-    var userid = document.getElementById("inputId").value;
-    if(userid){
-      url = "process_idOverlap.php?userid="+userid;
+    var user_id = document.getElementById("inputId").value;
+    if(user_id){
+      url = "process_idOverlap.php?user_id="+user_id;
       window.open(url,"아이디 중복체크", "width=300,height=100");
     }else{
       alert("아이디를 입력하세요.");

@@ -3,21 +3,21 @@
     include_once "../DBconnect.php";
     $DBconnect = new DBconnect();
 
-    $userid = $_GET['userId'];
-    $sql = "select id from user where id = '".$userid."'";
+    $user_id = $_GET['user_id'];
+    $sql = "select id from user where id = '".$user_id."'";
     $stmt = mysqli_query($conn, $sql);
     $user = mysqli_fetch_array($stmt);
     
     if($user==0){
         
 ?>
-<div><?php echo $userid;?>는 사용가능한 아이디입니다.</div>
+<div><?php echo $user_id;?>는 사용가능한 아이디입니다.</div>
 
 <?php
     } else{
 ?>
 
-<div><?php echo $userid;?>는 중복된 아이디입니다.</div>
+<div><?php echo $user_id;?>는 중복된 아이디입니다.</div>
 <?php
     }
 ?>

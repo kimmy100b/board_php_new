@@ -1,0 +1,22 @@
+form {
+  margin: 7% 29%;
+  padding: 5%;
+  width: 35%;
+  background-color: white;
+  border: #5a6268 2px solid;
+}
+
+.btn-group {
+  float: right;
+  margin: 0px;
+  padding: 0px;
+}
+
+.btn-reset {
+  margin-right: 10px;
+}
+
+.btn {
+  background: #0069d9;
+  border: none;
+}

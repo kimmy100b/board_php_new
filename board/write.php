@@ -11,14 +11,14 @@ session_start();?>
 </head>
 <?php 
 //로그인 되어있는 지 확인
-$userId=$_SESSION['userId'];
-if(isset($userId)){ ?>
+$user_id=$_SESSION['user_id'];
+if(isset($user_id)){ ?>
 <body>
     <div class="write-content">
         <form action="./process.php?mode=insert" method="POST" enctype="multipart/form-data">
             <div class="write_form">
                 <label for="writer">작성자</label>
-                <input type="text" name="writer" class="form-control" id="writer" value="<?php echo $userId; ?>" required readonly>
+                <input type="text" name="writer" class="form-control" id="writer" value="<?php echo $user_id; ?>" required readonly>
                 <!-- <label for="writer">작성자</label>
                 <input type="text" name="writer" class="form-control" id="writer" placeholder="작성자" required> -->
             </div>

@@ -7,7 +7,7 @@ require_once '../DBconnect.php';
 session_start();
 $conn = db_connect();
 
-$user=$_SESSION['userId'];
+$user=$_SESSION['user_id'];
 $id = $_GET['id'];
 $input_pw = $_POST['input_pw'];
 

@@ -1,4 +1,5 @@
 <?php
+# 로그아웃
     header('Content-Type: text/html; charset=utf-8');
  
     session_start();

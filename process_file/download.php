@@ -7,7 +7,7 @@ session_start();
 require_once '../DBconnect.php';
 $conn = db_connect();
 
-$user = $_SESSION['userId'];
+$user = $_SESSION['user_id'];
 
 $target_Dir = "../files/";
 $file = $_GET['fname'];

@@ -9,7 +9,7 @@ $conn = db_connect();
 
 session_start();
 
-$user=$_SESSION['userId'];
+$user=$_SESSION['user_id'];
 $admin = "admin"
 ?>
 <!DOCTYPE html>

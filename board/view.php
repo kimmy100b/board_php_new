@@ -5,7 +5,7 @@ include "../include/header.php";
 session_start();
 
 //섹션으로 받아온 사용자
-$user = $_SESSION['userId'];
+$user = $_SESSION['user_id'];
 //관리자 레벨 : 1
 $adm_level = 1;
 //게시판 번호
@@ -81,7 +81,7 @@ $f_name = $file['name'];  */
       <input type="hidden" value="<?php echo $id;?>" name="id">
       <h5>댓글</h5>
       <div class="input-group mb-3">
-        <input type="text" class="form-control" name="comm_content" placeholder="댓글을 입력하세요." aria-label="Recipient's username" aria-describedby="button-addon2">
+        <input type="text" class="form-control" name="comm_content" placeholder="댓글을 입력하세요." aria-label="Recipient's user_name" aria-describedby="button-addon2">
         <div class="input-group-append">
           <input class="btn btn-outline-secondary comm__btn"  type="submit" id="button-addon2" value="입력" onclick="location.href='comment/process_comm_insert.php'">
         </div>

@@ -4,6 +4,12 @@ header('Content-Type: text/html; charset=utf-8');
 include_once "../DBconnect.php";
 $DB = new DBconnect();
 session_start();
+//사용자
+$user = $_SESSION['user_id'];
+
+$sql = "SELECT level FROM user WHERE user_id = $user";
+$stmh = mysqli_query($conn, $sql);
+$result = mysqli_fetch_array($stmh);
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -22,10 +28,10 @@ session_start();
         <ul>
             <li><a href="#">About</a></li>
             <li><a href="../board/list.php">게시판</a></li>
-            <?php if(isset($_SESSION['userId'])){ ?>
-            <li><a href="#">마이페이지</a></li>
+            <?php if(isset($user)){ ?>
+            <li><a href="../member/mypage.php">마이페이지</a></li>
                 <!-- TODO : 관리자만 사용할 수 있는 권한으로 바꾸기 -->
-                <?php if($user == $admin){ ?>
+                <?php if($result[level] == 1){ ?>
                 <li class="nav-item">
                     <a class="nav-link" href="#"">회원관리</a>
                 </li>
@@ -35,8 +41,8 @@ session_start();
         </ul>
         <div class="login">
             <?php 
-            if(isset($_SESSION['userId'])){ ?>
-            <p class="login__msg"><?php echo $_SESSION['userId'];?>님 안녕하세요  </p> 
+            if(isset($_SESSION['user_id'])){ ?>
+            <p class="login__msg"><?php echo $_SESSION['user_id'];?>님 안녕하세요  </p> 
             <a href="../member/logout.php">로그아웃</a>
 
             <?php
