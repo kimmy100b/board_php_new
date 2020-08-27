@@ -10,7 +10,7 @@ if(isset($_GET["page"])){
     $page = 1;
   }
   
-  ?>
+?>
   <!DOCTYPE html>
   <html lang="ko">
   <head>
@@ -94,7 +94,6 @@ if(isset($_GET["page"])){
               ?>
             
             <?php
-              //$content = $row['content'];
               $content = strip_tags(htmlspecialchars_decode($row['content']));
               if(strlen($content)>33){
                 $content = str_replace($content, mb_substr($content,0,33,"utf-8")."...", $content);
@@ -114,52 +113,52 @@ if(isset($_GET["page"])){
         <?php }}
         ?>
           </table>
-          <div class="enroll">
-            <button class="btn btn-secondary enroll-btn" onclick="location.href='write.php'">등록</button>
-        </div> 
-    </div>   
-    <div class="board-page">
-      <?php
-        if($page<1){ // 빈 값
-        } else{
-            echo "<a href='list.php?page=1'>처음</a>";
-        }
-        if($page<1){// 빈 값
-        } else{
-          $pre = $page - 1;
-          echo "<a href='list.php?page=$pre'>◀ 이전</a>";
-        }
-        for($i = $block_start; $i <= $block_end; $i++){
-          if($page==$i){
-            echo "<b> $i </b>";
-          }else{
-            echo "<a href = 'list.php?page=$i'> $i </a>";
-          }
-        }
-  
-        if($page >= $total_page){ //빈 값
-        } else{
-          $next = $page + 1;
-          echo "<a href='list.php?page=$next'>다음 ▶</a>";
-        }
-        if($page >= $total_page){// 빈 값
-        } else{
-          echo "<a href='list.php?page=$total_page'>마지막</a>";
-        } 
-        ?>
-    </div>
-    <div class="search">
-      <select name="search-opt" id="search-opt" class="form-control search-opt" form="searchForm">
-        <option value="" selected>-선택-</option>
-        <option value="writer">작성자</option>
-        <option value="title">제목</option>
-        <option value="content">내용</option>
-      </select>
-      <!-- TODO : search-list만들기 -->
-      <form action="search-list.php" method="GET" class="search" id="searchForm">
-        <input type="text" class="form-control search-input" id="search-input" placeholder="Search" name="search-content">
-          <button class="btn btn-outline-secondary search-btn" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
-      </form>
-    </div>
-  </body>
-  </html>
+            <div class="enroll">
+              <button class="btn btn-secondary enroll-btn" onclick="location.href='write.php'">등록</button>
+          </div> 
+        </div>   
+        <div class="board-page">
+          <?php
+            if($page<1){ // 빈 값
+            } else{
+                echo "<a href='list.php?page=1'>처음</a>";
+            }
+            if($page<1){// 빈 값
+            } else{
+              $pre = $page - 1;
+              echo "<a href='list.php?page=$pre'>◀ 이전</a>";
+            }
+            for($i = $block_start; $i <= $block_end; $i++){
+              if($page==$i){
+                echo "<b> $i </b>";
+              }else{
+                echo "<a href = 'list.php?page=$i'> $i </a>";
+              }
+            }
+      
+            if($page >= $total_page){ //빈 값
+            } else{
+              $next = $page + 1;
+              echo "<a href='list.php?page=$next'>다음 ▶</a>";
+            }
+            if($page >= $total_page){// 빈 값
+            } else{
+              echo "<a href='list.php?page=$total_page'>마지막</a>";
+            } 
+            ?>
+        </div>
+        <div class="search">
+          <select name="search-opt" id="search-opt" class="form-control search-opt" form="searchForm">
+            <option value="" selected>-선택-</option>
+            <option value="writer">작성자</option>
+            <option value="title">제목</option>
+            <option value="content">내용</option>
+          </select>
+          <!-- TODO : search-list만들기 -->
+          <form action="search.php" method="GET" class="search" id="searchForm">
+            <input type="text" class="form-control search-input" id="search-input" placeholder="Search" name="search-content">
+              <button class="btn btn-outline-secondary search-btn" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
+          </form>
+        </div>
+    </body>
+</html>

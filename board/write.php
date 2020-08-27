@@ -2,27 +2,25 @@
 #게시물 작성화면
 header('Content-Type: text/html; charset=utf-8');
 include "../include/header.php";
-session_start();
-// $userId=$_SESSION['userId'];
-// if(isset($userId)){ ?>
+session_start();?>
 <!DOCTYPE html>
 <html lang="ko">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>게시물 작성</title>
 </head>
+<?php 
+//로그인 되어있는 지 확인
+$userId=$_SESSION['userId'];
+if(isset($userId)){ ?>
 <body>
     <div class="write-content">
         <form action="./process.php?mode=insert" method="POST" enctype="multipart/form-data">
             <div class="write_form">
-            <?php 
-                if(isset($userId)){ ?>
-                    <label for="writer">작성자</label>
-                    <input type="text" name="writer" class="form-control" id="writer" value="<?php echo $userId; ?>" required>
-                <?php } else{ ?>
-                   <label for="writer">작성자</label>
-                    <input type="text" name="writer" class="form-control" id="writer" placeholder="작성자" required>
-                <?php } ?>
+                <label for="writer">작성자</label>
+                <input type="text" name="writer" class="form-control" id="writer" value="<?php echo $userId; ?>" required readonly>
+                <!-- <label for="writer">작성자</label>
+                <input type="text" name="writer" class="form-control" id="writer" placeholder="작성자" required> -->
             </div>
             <div class="write_form">
                 <label for="title">제목</label>
@@ -40,18 +38,18 @@ session_start();
                 <label for="file">첨부파일</label>
                 <input type="file" name="userfile" class="form-control-file" id="file">
                 <!--
-                <input type="file" name="userfile[]" class="form-control-file" id="exampleFormControlFile2">
-                <input type="file" name="userfile[]" class="form-control-file" id="exampleFormControlFile3">
-                <input type="file" name="userfile[]" class="form-control-file" id="exampleFormControlFile4">
-                  -->
+                    <input type="file" name="userfile[]" class="form-control-file" id="exampleFormControlFile2">
+                    <input type="file" name="userfile[]" class="form-control-file" id="exampleFormControlFile3">
+                    <input type="file" name="userfile[]" class="form-control-file" id="exampleFormControlFile4">
+                -->
             </div>
             <div class="col-auto submit">
                 <input id="saveBtn" type="submit" class="btn btn-secondary" onclick="submitContents(this)" value="제출">
             </div> 
         </form>
     </div>
-<script type="text/javascript" src="../se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
-<script type="text/javascript">
+    <script type="text/javascript" src="../se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+    <script type="text/javascript">
   var oEditors = [];
   nhn.husky.EZCreator.createInIFrame({
       oAppRef: oEditors,
@@ -71,5 +69,16 @@ session_start();
     } catch(e) {}
   }
 </script>
+<?php
+}
+else{
+?>
+<script>
+  alert("로그인하세요");
+  location.href="../member/login.php";
+</script>
+<?php
+}
+?>
 </body>
 </html>
