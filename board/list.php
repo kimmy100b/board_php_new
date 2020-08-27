@@ -69,7 +69,12 @@ if(isset($_GET["page"])){
           <?php } else { ?>
         <?php while ($row = mysqli_fetch_array($result)) { ?>
           <tr>
-            <th scope="row"><?php echo $index; $index = $index-1; ?></th>
+            <th scope="row">
+              <?php 
+                echo $index; 
+                $index = $index-1; 
+              ?>
+            </th>
             <td><?= $row['writer'] ?></td>
             <?php 
               $title = $row['title'];

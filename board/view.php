@@ -37,10 +37,10 @@ $f_name = $file['name'];  */
     <title>게시판</title>
 </head>
 <body>
-    <div class="move">
+    <!-- <div class="move">
       <a href="list_view.php?board_sid=<?= ($board_sid-1) ?> ">< 이전 게시물</a>
       <a href="list_view.php?board_sid=<?= ($board_sid+1) ?>">다음 게시물 ></a>
-    </div>
+    </div> -->
     <div class="table-content">
     <table class="table table-bordered">
   <tbody>
@@ -68,7 +68,7 @@ $f_name = $file['name'];  */
   </tbody>
 </table>
    <div class="col-auto submit submit-btn">
-        <button type="button" class="btn btn-outline-secondary submit-btn__list" onclick="location.href='list.php'">목차</button>
+        <button type="button" class="btn btn-outline-secondary submit-btn__list" onclick="location.href='board_list.php'">목차</button>
         <?php if($user==$writer || $user==$admin) {?>
           <button type="button" class="btn btn-secondary submit-btn__delete" onclick="location.href='process_delete.php?id=<?= $id ?>'">삭제</button>
           <button type="button" class="btn btn-secondary submit-btn__modify" onclick="location.href='modify.php?id=<?= $id ?>'">수정</button>
@@ -76,19 +76,19 @@ $f_name = $file['name'];  */
     </div> 
     </div>
  
-   <article class="comment">
-   <form action="comment/process_comm_insert.php" method="post">
-   <input type="hidden" value="<?php echo $id;?>" name="id">
-   <h5>댓글</h5>
-   <div class="input-group mb-3">
-    <input type="text" class="form-control" name="comm_content" placeholder="댓글을 입력하세요." aria-label="Recipient's username" aria-describedby="button-addon2">
-    <div class="input-group-append">
-      <input class="btn btn-outline-secondary comm__btn"  type="submit" id="button-addon2" value="입력" onclick="location.href='comment/process_comm_insert.php'">
-    </div>
-  </div>
-  <div class="comm__view">
-  <hr>
-  </form>
+   <div class="comment">
+    <form action="comment/process_comm_insert.php" method="post">
+      <input type="hidden" value="<?php echo $id;?>" name="id">
+      <h5>댓글</h5>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" name="comm_content" placeholder="댓글을 입력하세요." aria-label="Recipient's username" aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <input class="btn btn-outline-secondary comm__btn"  type="submit" id="button-addon2" value="입력" onclick="location.href='comment/process_comm_insert.php'">
+        </div>
+      </div>
+      <div class="comm__view">
+      <hr>
+    </form>
       <?php
         $comm_sql = "select no, user_id, comment, date from comment where board_id = (select id from board WHERE id=$id) order by no desc";
         $comm_stmh = $conn->query($comm_sql);
@@ -113,6 +113,6 @@ $f_name = $file['name'];  */
         } 
       ?>    
    </div>
-   </article>
+   </div>
 </body>
 </html>

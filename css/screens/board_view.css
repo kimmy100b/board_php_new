@@ -1,5 +1,5 @@
 .table-content {
-  margin: 2% 2% 2% 2%;
+  margin: 3% 2% 2% 2%;
 }
 
 .submit-btn {
@@ -17,6 +17,7 @@
 
 .comment {
   background-color: rgba(204, 204, 204, 0.5);
+  margin: 4% 2% 2% 2%;
   padding: 1% 1% 1% 1%;
 }
 
