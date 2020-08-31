@@ -34,13 +34,10 @@ switch($_GET['mode']){
             $type = $_FILES["userfile"]["type"];
             $error = $_FILES["userfile"]["error"];
             $size = $_FILES["userfile"]["size"];
+            $timestamp = time();
+            $time = date('Y-m-d H:i:s', $timestamp);
         
-            if(!is_dir("{$uploads_dir}/{$board['board_sid']}")){
-                mkdir("{$uploads_dir}/{$board['board_sid']}",0707,true);
-            }else{
-            }
-        
-            move_uploaded_file($tmp_name, "{$uploads_dir}/{$board['board_sid']}/{$name}");
+            move_uploaded_file($tmp_name, "{$uploads_dir}/{$timestamp}");
         
             if($error !=0){ ?>
                 <script>
@@ -49,14 +46,12 @@ switch($_GET['mode']){
             <?php  
             } else{
                 // $sql = "INSERT INTO file(board_id, name, type, tmp, error, size) VALUES($board['id'],'".$name."','".$type."', '".$tmp_name."', $error, $size)";
-                $sql = "INSERT INTO file(board_sid, file_name_org, file_type, file_size) VALUES('".$board['board_sid']."','".$name."','".$type."','".$size."')";
+                $sql = "INSERT INTO file(board_sid, file_name_org, file_name_down, file_type, file_size, file_reg_data) VALUES('".$board['board_sid']."','".$name."','".$name."','".$type."','".$size."','".$time."')";
                 $result = mysqli_query($conn, $sql);
             }
         }
     break;
 }
-
-echo "안녕";
 
 header('Location: list.php');
 ?>

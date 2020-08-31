@@ -7,9 +7,9 @@
     session_start();
 
     //사용자 아이디
-    $user_id = $_POST["user_id"];
+    $user_id = $_POST["userId"];
     //사용자 비밀번호
-    $user_pw = $_POST["user_pw"];
+    $user_pw = $_POST["userPw"];
     //sha256으로 암호화한 비밀번호
     $pw_hash = hash("sha256",$user_pw);
 

@@ -1,19 +1,16 @@
+h2 {
+  margin: 3% 2% 2% 2%;
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.7);
+}
+
 form {
-  margin: 7% 29%;
-  padding: 5%;
-  width: 35%;
-  background-color: white;
-  border: #5a6268 2px solid;
+  margin: 0% 2% 2% 2%;
 }
 
 .btn-group {
   float: right;
   margin: 0px;
   padding: 0px;
-}
-
-.btn-reset {
-  margin-right: 10px;
 }
 
 .btn {

@@ -12,8 +12,8 @@
   <div class="wrapper">
     <form class="form-signin" action="login_process.php" method="POST">       
       <h2 class="form-signin-heading">로그인하세요</h2>
-      <input type="text" class="form-control" name="user_id" placeholder="아이디" required="" autofocus="" />
-      <input type="password" class="form-control" name="user_pw" placeholder="비밀번호" required=""/>      
+      <input type="text" class="form-control" name="userId" placeholder="아이디" required="" autofocus="" />
+      <input type="password" class="form-control" name="userPw" placeholder="비밀번호" required=""/>      
           <button class="btn btn-lg btn-primary btn-block" type="submit">로그인</button>   
     </form>
   </div>

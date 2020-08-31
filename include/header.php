@@ -10,6 +10,8 @@ $user = $_SESSION['user_id'];
 $sql = "SELECT level FROM user WHERE user_id = $user";
 $stmh = mysqli_query($conn, $sql);
 $result = mysqli_fetch_array($stmh);
+echo $sql;
+echo $result['level'];
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -31,7 +33,7 @@ $result = mysqli_fetch_array($stmh);
             <?php if(isset($user)){ ?>
             <li><a href="../member/mypage.php">마이페이지</a></li>
                 <!-- TODO : 관리자만 사용할 수 있는 권한으로 바꾸기 -->
-                <?php if($result[level] == 1){ ?>
+                <?php if($result['level'] == 1){ ?>
                 <li class="nav-item">
                     <a class="nav-link" href="#"">회원관리</a>
                 </li>

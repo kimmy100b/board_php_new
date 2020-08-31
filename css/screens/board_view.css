@@ -48,3 +48,7 @@
 .move__next {
   float: right;
 }
+
+.file-name {
+  text-align: left;
+}

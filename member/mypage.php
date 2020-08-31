@@ -29,10 +29,11 @@
     <title>회원정보 수정</title>
 </head>
 <body>
+  <h2>회원정보 수정</h2>
 <form action="mypage_process.php" method="POST">
   <div class="form-group">
     <label for="id">아이디*</label>
-    <input type="text" id="user_id" class="form-control" name="user_id" placeholder="아이디" value="<?= $user_id?>" required disabled>
+    <input type="text" id="userId" class="form-control" name="userId" placeholder="아이디" value="<?= $user_id?>" required disabled>
   </div>
   <div class="form-group">
     <label for="pw">비밀번호*</label>
@@ -40,7 +41,7 @@
   </div>
   <div class="form-group">
     <label for="name">이름*</label>
-    <input type="text" class="form-control" name="user_name" value="<?= $user_name?>" required disabled>
+    <input type="text" class="form-control" name="userName" value="<?= $user_name?>" required disabled>
   </div>
   <div class="form-group">
     <label for="phone">전화번호*</label>
@@ -48,12 +49,11 @@
   </div>
   <div class="form-group">
     <label for="email">이메일*</label>
-    <input type="email" class="form-control" name="user_email" value="<?= $user_email ?>" required>
+    <input type="email" class="form-control" name="userEmail" value="<?= $user_email ?>" required>
   </div>
   <div class="form-group btn-group">
-      <button type="reset" class="btn btn-secondary btn-reset">재작성</button> 
       <button type="submit" class="btn btn-secondary btn-submit">수정</button> 
-</div>
+  </div>
 </form>
 </body>
 </html>

@@ -22,10 +22,10 @@ $content = htmlspecialchars_decode($board['content']);
 $writer = $board['writer'];
 //첨부파일
 // TODO : 첨부파일 기능구현
-/* $sql = "SELECT board_id, name, type FROM file WHERE board_id=$id";
+$sql = "SELECT board_sid, file_name_down FROM file WHERE board_sid=$board_sid";
 $result = mysqli_query($conn, $sql);
 $file = mysqli_fetch_array($result);
-$f_name = $file['name'];  */
+$f_name = $file['file_name_down']; 
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -60,7 +60,7 @@ $f_name = $file['name'];  */
     ?>
       <tr>
         <th scope="row" class="th-file">첨부파일</th>
-        <td colspan="2" class="content"><a href="download.php?fname=<?= $f_name?>&id=<?=$id?>"><?php echo $f_name; ?></a></td>
+        <td colspan="2" class="file-name"><a href="file-download.php?fname=<?= $f_name?>&id=<?=$board_sid?>"><?php echo $f_name; ?></a></td>
       </tr>
     <?php
       }
@@ -98,10 +98,10 @@ $f_name = $file['name'];  */
           <?php echo $row['comment']; ?><br/>
           <?php if($user==$row['user_id']|| $user==$admin){ ?>
           <div class="comm__forms" style="display:flex">
-          <!-- <form action="comment/comm_modify.php?id=<?=$id?>" mode="POST" class="comm__form">
+          <form action="comment/comm_modify.php?id=<?=$id?>" mode="POST" class="comm__form">
             <input type="hidden" value="<?php echo $row['no'];?>" name="comm_no">
             <button type="submit" class="comm-btn__mod btn btn-outline-secondary">수정</button>
-          </form> -->
+          </form> 
           <form action="comment/process_comm_delete.php" mode="POST" class="comm_form">
             <input type="hidden" value="<?php echo $row['no'];?>" name="comm_no">
             <button type="submit" class="comm-btn__del btn btn-outline-secondary">삭제</button>
