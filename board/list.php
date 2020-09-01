@@ -149,7 +149,7 @@ if(isset($_GET["page"])){
         </div>
         <div class="search">
           <select name="search-opt" id="search-opt" class="form-control search-opt" form="searchForm">
-            <option value="" selected>-선택-</option>
+            <option value="not" selected>-선택-</option>
             <option value="writer">작성자</option>
             <option value="title">제목</option>
             <option value="content">내용</option>

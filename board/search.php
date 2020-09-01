@@ -39,20 +39,16 @@ $search_content = $_GET['search-content'];
         </thead>
         <?php
          //페이징하는 기능
-        //게시물 전체 개수 구하는 SQL     
-        if(!is_null($search)){
-            $total_cnt_sql = "SELECT board_sid FROM board WHERE $search LIKE '%$search_content%'";
-            $total_cnt_data = mysqli_query($conn, $total_cnt_sql);
-            //게시물 전체 개수
-            $total_cnt = mysqli_num_rows($total_cnt_data);
+        //게시물 전체 개수 구하는 SQL            
+        if($search=="not"){
+          $total_cnt_sql = "SELECT board_sid FROM board WHERE writer LIKE '%$search_content%' OR title LIKE '%$search_content%' OR content LIKE '%$search_content%'";
         } else{
-            $total_cnt_sql = "SELECT board_sid FROM board WHERE writer LIKE '%$search_content%' OR title LIKE '%$search_content%' OR content LIKE '%$search_content%'";
-            $total_cnt_data = mysqli_query($conn, $total_cnt_sql);
-            //게시물 전체 개수
-            $total_cnt = mysqli_num_rows($total_cnt_data);
+          $total_cnt_sql = "SELECT board_sid FROM board WHERE $search LIKE '%$search_content%'";
         } 
-        echo $search;
-        echo $total_cnt;
+        $total_cnt_data = mysqli_query($conn, $total_cnt_sql);
+        //게시물 전체 개수
+        $total_cnt = mysqli_num_rows($total_cnt_data);
+        echo $total_cnt_sql;
         //한 화면에 보여줄 게시물 개수
         $list = 10;
         $block_cnt = 5;
@@ -166,7 +162,7 @@ $search_content = $_GET['search-content'];
   </div>
   <div class="search">
       <select name="search-opt" id="search-opt" class="form-control search-opt" form="searchForm">
-        <option value="" selected>-선택-</option>
+        <option value="not" selected>-선택-</option>
         <option value="writer">작성자</option>
         <option value="title">제목</option>
         <option value="content">내용</option>

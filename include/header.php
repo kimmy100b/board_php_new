@@ -10,8 +10,7 @@ $user = $_SESSION['user_id'];
 $sql = "SELECT level FROM user WHERE user_id = $user";
 $stmh = mysqli_query($conn, $sql);
 $result = mysqli_fetch_array($stmh);
-echo $sql;
-echo $result['level'];
+
 ?>
 <!DOCTYPE html>
 <html lang="ko">

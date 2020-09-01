@@ -3,7 +3,12 @@
 }
 
 .submit-btn {
+  display: flex;
   padding: 0px;
+  justify-content: space-around;
+}
+
+.submit-btn__list {
 }
 
 .submit-btn__modify,
