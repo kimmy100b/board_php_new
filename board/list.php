@@ -84,7 +84,7 @@ if(isset($_GET["page"])){
       
               if(!empty($row['passwd'])){?>
               <!-- TODO : 비밀번호 입력 페이지 -->
-                <td><a href="./passwd/passwd_form.php?board_sid=<?= $row['board_sid'] ?>"><?php echo $title." [".$row['comm_cnt']."]"; ?></a><i class='fas fa-lock'></i></td>    
+                <td><a href="./board/board_pw.php?board_sid=<?= $row['board_sid'] ?>"><?php echo $title." [".$row['comm_cnt']."]"; ?></a><i class='fas fa-lock'></i></td>    
               <?php
               } else{
                 ?>

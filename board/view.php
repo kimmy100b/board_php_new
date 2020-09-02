@@ -45,21 +45,21 @@ $f_name = $file['file_name_down'];
     <table class="table table-bordered">
   <tbody>
     <tr>
-      <th scope="row" class="th-title">제목</th>
+      <th scope="row" class="th-name th-title">제목</th>
       <td><?php echo $title; ?></td>
     </tr>
     <tr>
-      <th scope="row" class="th-writer">작성자</th>
+      <th scope="row" class="th-name th-writer">작성자</th>
       <td><?php echo $writer; ?></td>
     </tr>
      <tr>
-      <td colspan="2" class="content"><?php echo $content;?></td>
+      <td colspan="10" class="th-content"><?php echo $content;?></td>
     </tr>
     <?php
       if(!is_null($f_name)){
     ?>
       <tr>
-        <th scope="row" class="th-file">첨부파일</th>
+        <th scope="row" class="th-name th-file">첨부파일</th>
         <td colspan="2" class="file-name"><a href="file-download.php?fname=<?= $f_name?>&id=<?=$board_sid?>"><?php echo $f_name; ?></a></td>
       </tr>
     <?php
@@ -69,10 +69,12 @@ $f_name = $file['file_name_down'];
 </table>
    <div class="col-auto submit submit-btn">
         <button type="button" class="btn btn-outline-secondary submit-btn__list" onclick="location.href='list.php'">목차</button>
-        <?php if($user==$writer || $user==$admin) {?>
-          <button type="button" class="btn btn-secondary submit-btn__delete" onclick="location.href='process.php?mode=delete&board_sid=<?= $board_sid ?>'">삭제</button>
-          <button type="button" class="btn btn-secondary submit-btn__modify" onclick="location.href='modify_write.php?board_sid=<?= $board_sid ?>'">수정</button>
-        <?php } ?>
+        <div class="submit-btn__change">         
+          <?php if($user==$writer || $user==$admin) {?>
+            <button type="button" class="btn btn-secondary submit-btn__modify" onclick="location.href='modify_write.php?board_sid=<?= $board_sid ?>'">수정</button>
+            <button type="button" class="btn btn-secondary submit-btn__delete" onclick="location.href='process.php?mode=delete&board_sid=<?= $board_sid ?>'">삭제</button>
+            <?php } ?>
+        </div>
     </div> 
     </div>
  

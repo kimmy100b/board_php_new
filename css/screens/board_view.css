@@ -5,15 +5,8 @@
 .submit-btn {
   display: flex;
   padding: 0px;
-  justify-content: space-around;
-}
-
-.submit-btn__list {
-}
-
-.submit-btn__modify,
-.submit-btn__delete {
-  float: right;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .submit-btn__delete {
@@ -33,7 +26,6 @@
 .th-title,
 .th-writer {
   width: 15%;
-  text-align: center;
 }
 
 .comm-btn__mod,
