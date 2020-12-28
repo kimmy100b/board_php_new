@@ -10,7 +10,7 @@ CREATE TABLE `board` (
 	PRIMARY KEY (`board_sid`) USING BTREE,
 	INDEX `FK_board_user` (`writer`) USING BTREE
 )
-COLLATE='latin1_swedish_ci'
+COLLATE='utf8_general_ci'
 ENGINE=MyISAM
 AUTO_INCREMENT=12
 ;
@@ -27,7 +27,7 @@ CREATE TABLE `comment` (
 	INDEX `FK_comment_board` (`board_sid`) USING BTREE
 )
 COMMENT='게시판 댓글'
-COLLATE='latin1_swedish_ci'
+COLLATE='utf8_general_ci'
 ENGINE=MyISAM
 ;
 
@@ -36,7 +36,7 @@ CREATE TABLE `file` (
 	`file_sid` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '일련번호',
 	`board_sid` INT(11) UNSIGNED NOT NULL COMMENT '게시판 SID',
 	`file_name_down` VARCHAR(50) NOT NULL COMMENT '파일명(다운링크용)' COLLATE 'utf8_general_ci',
-	`file_name_org` VARCHAR(50) NOT NULL COMMENT '파일명(원 파일명)' COLLATE 'latin1_swedish_ci',
+	`file_name_org` VARCHAR(50) NOT NULL COMMENT '파일명(원 파일명)' COLLATE 'utf8_general_ci',
 	`file_size` MEDIUMINT(8) UNSIGNED NOT NULL COMMENT '파일 사이즈(KB)',
 	`file_type` VARCHAR(255) NOT NULL COMMENT '파일 타입' COLLATE 'utf8_general_ci',
 	`file_down_count` INT(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT '다운로드 횟수',
@@ -44,7 +44,7 @@ CREATE TABLE `file` (
 	PRIMARY KEY (`file_sid`) USING BTREE,
 	INDEX `FK_file_board` (`board_sid`) USING BTREE
 )
-COLLATE='latin1_swedish_ci'
+COLLATE='utf8_general_ci'
 ENGINE=MyISAM
 AUTO_INCREMENT=21
 ;
@@ -58,10 +58,10 @@ CREATE TABLE `user` (
 	`user_phone` CHAR(20) NOT NULL COMMENT '전화번호' COLLATE 'utf8_general_ci',
 	`user_email` VARCHAR(80) NOT NULL COMMENT '이메일' COLLATE 'utf8_general_ci',
 	`reg_date` DATETIME NOT NULL COMMENT '가입일자',
-	`level` INT(11) NOT NULL DEFAULT '0' COMMENT '0:일반, 1:관리자',
+	`admin` INT(11) NOT NULL DEFAULT '0' COMMENT '0:일반, 1:관리자',
 	PRIMARY KEY (`user_sid`) USING BTREE
 )
-COLLATE='latin1_swedish_ci'
+COLLATE='utf8_general_ci'
 ENGINE=MyISAM
 AUTO_INCREMENT=3
 ;

@@ -7,5 +7,6 @@
 </head>
 <body>
     <a href="http://dev.mxweb.kr:8438/main/main.php">메인화면으로 가기</a>
+    <a href="./main/main.php">메인화면으로 가기</a>
 </body>
 </html>

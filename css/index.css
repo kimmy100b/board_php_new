@@ -4,10 +4,12 @@
 @import "components/header.css";
 
 /* screens css */
-@import "screens/board_write.css";
-@import "screens/board_list.css";
+/* @import "screens/board_write.css";
+@import "screens/board_list.css"; */
+@import "screens/join.css";
 
 body {
   font-family: "Noto Sans KR", sans-serif;
   font-family: "Open Sans", sans-serif;
+  /* background-color: #f5f5f5; */
 }

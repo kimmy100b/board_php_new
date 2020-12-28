@@ -1,10 +1,16 @@
 <?php
 # 메인 화면
-header('Content-Type: text/html; charset=utf-8');
 include "../include/header.php";
-session_start();
+// session_start();
 ?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메인</title>
+</head>
 <body>
-<!-- TODO : 메인화면 -->
-<p>메인화면</p> 
+<h1>dd</h1>
 </body>
+</html>

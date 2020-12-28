@@ -1,126 +1,74 @@
-<?php
-header('Content-Type: text/html; charset=utf-8');
-// DB연동
-include_once "../DBconnect.php";
-$DB = new DBconnect();
-session_start();
-//사용자
-$user = $_SESSION['user_id'];
-
-$sql = "SELECT level FROM user WHERE user_id = $user";
-$stmh = mysqli_query($conn, $sql);
-$result = mysqli_fetch_array($stmh);
-
-?>
 <!DOCTYPE html>
 <html lang="ko">
+<?php
+// header('Content-Type: text/html; charset=utf-8');
+include_once "../DB/DBconnect.php";
+session_start();
+// include_once "../DB/admin_access.php";
+?>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/2a001071af.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/index.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/2a001071af.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../css/index.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 </head>
 
 <body>
-    <nav>
-        <ul>
-            <li><a href="#">About</a></li>
-            <li><a href="../board/list.php">게시판</a></li>
-            <?php if(isset($user)){ ?>
-            <li><a href="../member/mypage.php">마이페이지</a></li>
-                <!-- TODO : 관리자만 사용할 수 있는 권한으로 바꾸기 -->
-                <?php if($result['level'] == 1){ ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"">회원관리</a>
+  <nav class="cm-navbar navbar navbar-expand-lg navbar-light bg-light" style="overflow: visible; padding-bottom: 0px;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="../main/main.php">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../board/list.php">Board</a>
+          </li>
+          <?php if (isset($user)) { ?>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <?php echo $_SESSION['user_id']; ?>님 안녕하세요
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="../member/mypage.php">마이페이지</a></li>
+                <li><a class="dropdown-item" href="../member/logout.php">로그아웃</a></li>
+                <li>
+                  <hr class="dropdown-divider">
                 </li>
-                <?php
-                }
-            }?>
+                <?php if ($_SESSION['is_admin'] == 'Y') { ?>
+                  <li><a class="dropdown-item" href="#">회원관리</a></li>
+                <?php } ?>
+              </ul>
+            </li>
+          <?php } else { ?>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Login
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="../member/login.php">로그인</a></li>
+                <li><a class="dropdown-item" href="../member/join.php">회원가입</a></li>
+              </ul>
+            </li>
+          <?php } ?>
         </ul>
-        <div class="login">
-            <?php 
-            if(isset($_SESSION['user_id'])){ ?>
-            <p class="login__msg"><?php echo $_SESSION['user_id'];?>님 안녕하세요  </p> 
-            <a href="../member/logout.php">로그아웃</a>
-
-            <?php
-            }else{
-                ?>
-            <a href="../member/login.php">로그인</a>
-            <a href="../member/join.php">회원가입</a>
-            <?php
-            }
-            ?>
-        </div>
-        <div class="button">
-            <a class="btn-open" href="#"></a>
-        </div>
-    </nav>
-        <div class="overlay">
-            <div class="wrap">
-                <ul class="wrap-nav">
-                    <li><a href="#">About</a>
-                    <ul>
-                        <li><a href="#">About Company</a></li>
-                        <li><a href="#">Designers</a></li>
-                        <li><a href="#">Developers</a></li>
-                        <li><a href="#">Pets</a></li>
-                    </ul>
-                    </li>
-                    <li><a href="#">Services</a>
-                    <ul>
-                        <li><a href="https://www.google.hr/">Web Design</a></li>
-                        <li><a href="#">Development</a></li>
-                        <li><a href="#">Apps</a></li>
-                        <li><a href="#">Graphic design</a></li>
-                        <li><a href="#">Branding</a></li>
-                    </ul>
-                    </li>
-                    <li><a href="#">Work</a>
-                    <ul>
-                        <li><a href="#">Web</a></li>
-                        <li><a href="#">Graphic</a></li>
-                        <li><a href="#">Apps</a></li>
-                    </ul>
-                    </li>
-                </ul>
-                <div class="social">
-                    <a href="http://mario-loncarek.from.hr/">
-                    <div class="social-icon">
-                        <i class="fa fa-facebook"></i>
-                    </div>
-                    </a>
-                    <a href="#">
-                    <div class="social-icon">
-                        <i class="fa fa-twitter"></i>
-                    </div>
-                    </a>
-                    <a href="#">
-                    <div class="social-icon">
-                        <i class="fa fa-codepen"></i>
-                    </div>
-                    </a>
-                    <a href="#">
-                    <div class="social-icon">
-                        <i class="fa fa-behance"></i>
-                    </div>
-                    </a>
-                    <a href="#">
-                    <div class="social-icon">
-                        <i class="fa fa-dribbble"></i>
-                    </div>
-                    </a>
-                    <p>
-                        From: Zagreb, Croatia<br>
-                         Site: <a href="http://mario-loncarek.from.hr/">mario-loncarek.from.hr</a>
-                    </p>
-                </div>
-            </div>
-        </div>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
 </body>
 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script src="../js/index.js"></script>
-</html>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
