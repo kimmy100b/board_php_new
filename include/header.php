@@ -4,7 +4,9 @@
 // header('Content-Type: text/html; charset=utf-8');
 include_once "../DB/DBconnect.php";
 session_start();
-// include_once "../DB/admin_access.php";
+if (isset($_SESSION['is_login'])) {
+  $user = $_SESSION['user_id'];
+}
 ?>
 
 <head>
@@ -42,10 +44,10 @@ session_start();
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="../member/mypage.php">마이페이지</a></li>
                 <li><a class="dropdown-item" href="../member/logout.php">로그아웃</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <?php if ($_SESSION['is_admin'] == 'Y') { ?>
+                <?php if (isset($_SESSION['is_admin'])) { ?>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
                   <li><a class="dropdown-item" href="#">회원관리</a></li>
                 <?php } ?>
               </ul>

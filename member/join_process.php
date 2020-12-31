@@ -31,7 +31,7 @@ if ($row['cnt'] != 0) {
     </script>
     <?php
 } else {
-    $sql = "INSERT INTO user(user_id, user_pw, user_name, user_phone, user_email, reg_date, admin) VALUES('" . $userId . "', '" . $userPwHash . "', '" . $userName . "', '" . $userTel . "', '" . $userEmail . "',now(), 0)";
+    $sql = "INSERT INTO user(user_id, user_pw, user_name, user_phone, user_email, reg_date, admin_yn) VALUES('" . $userId . "', '" . $userPwHash . "', '" . $userName . "', '" . $userTel . "', '" . $userEmail . "',now(), 0)";
     $result = mysqli_query($conn, $sql);
 
     if ($result) {

@@ -20,8 +20,14 @@ if (mysqli_num_rows($result) == 1) {
     $row = mysqli_fetch_assoc($result);
 
     if ($row['user_pw'] == $pw_hash) {
-        $_SESSION["user_id"] = $user_id;
-        // $_SESSION["is_admin"] = 'Y';
+        $_SESSION['is_login'] = true;
+        $_SESSION["user_id"] = $row['user_id'];
+
+
+        if ($row['admin_yn'] == true) {
+            $_SESSION["is_admin"] = true;
+        }
+
         if (isset($_SESSION['user_id'])) {
 ?>
             <script>
