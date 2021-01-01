@@ -2,6 +2,15 @@
   margin: 3% 2% 2% 2%;
 }
 
+.board-search {
+  display: flex;
+  justify-content: right;
+}
+
+.board-search-opt {
+  width: 90px;
+}
+
 .board-no {
   text-align: center;
 }
@@ -19,15 +28,6 @@
   margin-bottom: 10px;
 }
 
-.search {
-  display: flex;
-  justify-content: center;
+.board-page-ul {
+  display: inline-flex;
 }
-
-.search-opt {
-  width: 90px;
-}
-
-/* .btn-before {
-  margin-right: 70%;
-} */

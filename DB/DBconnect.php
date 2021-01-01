@@ -17,6 +17,3 @@ if (!$conn) {
     echo 'Debugging errno: ' . mysqli_connect_errno() . PHP_EOL;
     exit();
 }
-
-echo "DB에 연결되었습니다";
-?>
