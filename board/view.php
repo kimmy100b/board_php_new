@@ -6,6 +6,12 @@ include "../include/header.php";
 //로그인 되어있는 지 확인
 if (isset($_SESSION['is_login'])) {
   $user = $_SESSION['user_id'];
+} else { ?>
+  <script>
+    alert("로그인하세요");
+    location.href = "../member/login.php";
+  </script>
+<?php
 }
 
 $board_sid = $_GET['board_sid'];
@@ -93,11 +99,8 @@ $writer = $board['writer'];
         <hr>
     </form>
     <?php
-    $comm_sql = "select no, user_id, comment, date from comment where board_id = (select id from board WHERE id=$board_sid) order by no desc";
+    $comm_sql = "select c_no, user_id, content, register_date from comment where board_sid = $board_sid order by c_no desc";
     $comm_stmh = $conn->query($comm_sql);
-    echo $comm_stmh;
-    $row = $comm_stmh->fetch_assoc();
-    exit;
 
     while ($row = $comm_stmh->fetch_assoc()) { ?>
       <b><?php echo $row['user_id']; ?></b>(<?php echo $row['date']; ?>)<br />

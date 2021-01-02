@@ -73,7 +73,7 @@ if (isset($_GET["page"])) {
         $page_start = ($page - 1) * $list;
 
         //게시판 리스트에 출력할 데이터들 SQL
-        $sql = "SELECT (SELECT COUNT(comment_sid) FROM comment AS a where a.board_sid = b.board_sid) AS comm_cnt ,board_sid, writer, title, content, register_date, passwd FROM board AS b ORDER BY board_sid DESC LIMIT $page_start, $list";
+        $sql = "SELECT (SELECT COUNT(c_no) FROM comment AS a where a.board_sid = b.board_sid) AS comm_cnt , b.board_sid, b.writer, b.title, b.content, b.register_date, b.passwd FROM board AS b ORDER BY board_sid DESC LIMIT $page_start, $list";
         $result = mysqli_query($conn, $sql);
         //게시판 목차 숫자
         $index = $total_cnt - (10 * ($page - 1));
@@ -94,9 +94,6 @@ if (isset($_GET["page"])) {
               <td><?= $row['writer'] ?></td>
               <?php
               $title = $row['title'];
-              if (strlen($title) > 12) {
-                $title = str_replace($row['title'], substr($row['title'], 0, 12) . "...", $row['title']);
-              }
 
               if (!empty($row['passwd'])) { ?>
                 <!-- TODO : 비밀번호 입력 페이지 -->
@@ -104,7 +101,8 @@ if (isset($_GET["page"])) {
               <?php
               } else {
               ?>
-                <td><a href="view.php?board_sid=<?= $row['board_sid'] ?>"><?php echo $title . " [" . $row['comm_cnt'] . "]"; ?></a> </td>
+                <!-- <td><a href="view.php?board_sid=<?= $row['board_sid'] ?>"><?php echo $title . " [" . $row['comm_cnt'] . "]"; ?></a> </td> -->
+                <td><?php echo $title ?></td>
               <?php
               }
               ?>
@@ -119,7 +117,9 @@ if (isset($_GET["page"])) {
               <?php
               } else {
               ?>
-                <td><?php echo $content; ?></td>
+                <td>
+                  <a href="view.php?board_sid=<?= $row['board_sid'] ?>"><?php echo $content; ?></a><?php echo " [" . $row['comm_cnt'] . "]"; ?>
+                </td>
               <?php
               }
               ?>

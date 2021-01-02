@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Open+Sans:wght@300;400;600;700;800&display=swap");
 
 /* screens css */
-/* @import "screens/board_write.css";*/
+@import "screens/board_view.css";
+@import "screens/board_write.css";
 @import "screens/board_list.css";
 @import "screens/join.css";
 

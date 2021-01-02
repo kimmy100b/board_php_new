@@ -33,8 +33,8 @@ if (isset($_SESSION['is_login'])) {
                     <input type="password" name="passwd" class="form-control" id="passwd" placeholder="비밀글을 원하실 비밀번호를 입력해주세요">
                 </div>
                 <div class="write_form write_not_setting">
-                    <label for="content">내용</label>
-                    <textarea name="content" id="ir1" rows="20" cols="219"> </textarea>
+                    <label for="content">본문</label>
+                    <textarea name="content" id="ir1" rows="20" cols="147"> </textarea>
                 </div>
                 <div class="write_form write_not_setting">
                     <label for="file">첨부파일</label>
