@@ -46,7 +46,7 @@ if (isset($_SESSION['is_login'])) {
                 -->
                 </div>
                 <div class="col-auto submit">
-                    <input id="saveBtn" type="submit" class="btn btn-secondary" onclick="submitContents(this)" value="제출">
+                    <input id="saveBtn" type="submit" class="btn btn-secondary" onclick="submitContents(this)" value="등록">
                 </div>
             </form>
         </div>
@@ -65,7 +65,6 @@ if (isset($_SESSION['is_login'])) {
                 oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
 
                 // 에디터의 내용에 대한 값 검증은 이곳에서
-                // document.getElementById("ir1").value를 이용해서 처리한다.
                 try {
                     elClickedObj.form.submit();
                 } catch (e) {}

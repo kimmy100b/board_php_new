@@ -4,7 +4,6 @@ header('Content-Type: text/html; charset=utf-8');
 session_start();
 
 require_once '../DB/DBconnect.php';
-$conn = db_connect();
 
 $user = $_SESSION['user_id'];
 

@@ -27,10 +27,11 @@ $content = htmlspecialchars_decode($board['content']);
 $writer = $board['writer'];
 //첨부파일
 // TODO : 첨부파일 기능구현
-// $sql = "SELECT board_sid, file_name_down FROM file WHERE board_sid=$board_sid";
-// $result = mysqli_query($conn, $sql);
-// $file = mysqli_fetch_array($result);
-// $f_name = $file['file_name_down'];
+$f_sql = "SELECT file_name_down FROM file WHERE board_sid=$board_sid";
+$f_result = mysqli_query($conn, $f_sql);
+if ($file = mysqli_fetch_array($f_result)) {
+  $f_name = $file['file_name_down'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -62,16 +63,16 @@ $writer = $board['writer'];
         <tr>
           <td colspan="10" class="th-content"><?php echo $content; ?></td>
         </tr>
-        <!-- <?php
-              if (!is_null($f_name)) {
-              ?>
+        <?php
+        if (isset($f_name)) {
+        ?>
           <tr>
             <th scope="row" class="th-name th-file">첨부파일</th>
-            <td colspan="2" class="file-name"><a href="file-download.php?fname=<?= $f_name ?>&id=<?= $board_sid ?>"><?php echo $f_name; ?></a></td>
+            <td colspan="2" class="file-name"><a href="../file_process/download.php?fname=<?= $f_name ?>&id=<?= $board_sid ?>"><?php echo $f_name; ?></a></td>
           </tr>
         <?php
-              }
-        ?> -->
+        }
+        ?>
       </tbody>
     </table>
     <div class="col-auto submit submit-btn">

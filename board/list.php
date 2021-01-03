@@ -49,7 +49,7 @@ if (isset($_GET["page"])) {
         //페이징하는 기능
 
         //게시물 전체 개수 구하는 SQL
-        $total_cnt_sql = 'select board_sid from board';
+        $total_cnt_sql = 'select board_sid from board WHERE del_yn = 0';
         $total_cnt_data = mysqli_query($conn, $total_cnt_sql);
         //게시물 전체 개수
         $total_cnt = mysqli_num_rows($total_cnt_data);
@@ -73,7 +73,7 @@ if (isset($_GET["page"])) {
         $page_start = ($page - 1) * $list;
 
         //게시판 리스트에 출력할 데이터들 SQL
-        $sql = "SELECT (SELECT COUNT(c_no) FROM comment AS a where a.board_sid = b.board_sid) AS comm_cnt , b.board_sid, b.writer, b.title, b.content, b.register_date, b.passwd FROM board AS b ORDER BY board_sid DESC LIMIT $page_start, $list";
+        $sql = "SELECT (SELECT COUNT(c_no) FROM comment AS a where a.board_sid = b.board_sid) AS comm_cnt , b.board_sid, b.writer, b.title, b.content, b.register_date, b.passwd FROM board AS b WHERE del_yn = 0 ORDER BY board_sid DESC LIMIT $page_start, $list";
         $result = mysqli_query($conn, $sql);
         //게시판 목차 숫자
         $index = $total_cnt - (10 * ($page - 1));
@@ -109,8 +109,8 @@ if (isset($_GET["page"])) {
 
               <?php
               $content = strip_tags(htmlspecialchars_decode($row['content']));
-              if (strlen($content) > 33) {
-                $content = str_replace($content, substr($content, 0, 33) . "...", $content);
+              if (strlen($content) > 50) {
+                $content = str_replace($content, substr($content, 0, 50) . "...", $content);
               }
               if (!empty($row['passwd'])) { ?>
                 <td><?php echo "비밀글입니다."; ?></td>

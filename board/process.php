@@ -1,19 +1,20 @@
 <?php
-#게시물 삽잎 삭제
+#게시물 CUD
 header('Content-Type: text/html; charset=utf-8');
 // DB연동
 include_once "../DB/DBconnect.php";
 
-$uploads_dir = "../board_files";
-$file = $_FILES['userfile']['tmp_name'];
-
-$writer = $_POST['writer'];
-$title = $_POST['title'];
-$content = htmlspecialchars($_POST['content'], ENT_QUOTES);
-$passwd = $_POST['passwd'];
 
 switch ($_GET['mode']) {
     case "insert":
+        $uploads_dir = "../board_files";
+        $file = $_FILES['userfile']['tmp_name'];
+
+        $writer = $_POST['writer'];
+        $title = $_POST['title'];
+        $content = htmlspecialchars($_POST['content'], ENT_QUOTES);
+        $passwd = $_POST['passwd'];
+
         if (empty($passwd)) {
             $sql = "INSERT INTO board(writer, title, content, register_date) VALUES('" . $writer . "','" . $title . "','" . $content . "', now())";
             $result = mysqli_query($conn, $sql);
@@ -44,13 +45,24 @@ switch ($_GET['mode']) {
             <?php
             } else {
                 // $sql = "INSERT INTO file(board_id, name, type, tmp, error, size) VALUES($board['id'],'".$name."','".$type."', '".$tmp_name."', $error, $size)";
-                $sql = "INSERT INTO file(board_sid, file_name_org, file_name_down, file_type, file_size, file_reg_data) VALUES('" . $board['board_sid'] . "','" . $name . "','" . $name . "','" . $type . "','" . $size . "','" . $time . "')";
+                $sql = "INSERT INTO file(board_sid, file_name_org, file_name_down, file_type, file_size, file_reg_data) VALUES('" . $board['board_sid'] . "','" . $timestamp . "','" . $name . "','" . $type . "','" . $size . "','" . $time . "')";
                 $result = mysqli_query($conn, $sql);
             }
         }
+
+        $msg = "게시물이 등록되었습니다.";
         break;
+
     case "modify":
         $boardSid = $_GET['board_sid'];
+
+        $uploads_dir = "../board_files";
+        $file = $_FILES['userfile']['tmp_name'];
+
+        $writer = $_POST['writer'];
+        $title = $_POST['title'];
+        $content = htmlspecialchars($_POST['content'], ENT_QUOTES);
+        $passwd = $_POST['passwd'];
 
         if (empty($passwd)) {
             $sql = "UPDATE board SET writer ='" . $writer . "' , title='" . $title . "', content='" . $content . "', modify_date = now() WHERE board_sid = $boardSid";
@@ -78,15 +90,25 @@ switch ($_GET['mode']) {
 <?php
             } else {
                 // $sql = "INSERT INTO file(board_id, name, type, tmp, error, size) VALUES($board['id'],'".$name."','".$type."', '".$tmp_name."', $error, $size)";
-                $sql = "INSERT INTO file(board_sid, file_name_org, file_name_down, file_type, file_size, file_reg_data) VALUES('" . $board['board_sid'] . "','" . $name . "','" . $name . "','" . $type . "','" . $size . "','" . $time . "')";
+                $sql = "INSERT INTO file(board_sid, file_name_org, file_name_down, file_type, file_size, file_reg_data) VALUES('" . $board['board_sid'] . "','" . $timestamp . "','" . $name . "','" . $type . "','" . $size . "','" . $time . "')";
                 $result = mysqli_query($conn, $sql);
             }
         }
+
+        $msg = "게시물이 수정되었습니다.";
         break;
+
     case "delete":
-        //TODO : 삭제하기
+        $boardSid = $_GET['board_sid'];
+
+        $sql = "UPDATE board SET del_yn = 1, delete_date = now() WHERE board_sid = $boardSid";
+        $result = mysqli_query($conn, $sql);
+
+        $msg = "게시물이 삭제되었습니다.";
         break;
 }
-
-header('Location: list.php');
 ?>
+<script>
+    alert("<?php echo $msg ?>");
+    location.href = "../board/list.php";
+</script>
