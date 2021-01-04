@@ -4,9 +4,6 @@ header('Content-Type: text/html; charset=utf-8');
 include "../include/header.php";
 // DB연동
 include_once "../DB/DBconnect.php";
-$DBconnect = new DBconnect();
-
-session_start();
 
 if (isset($_GET["page"])) {
   $page = $_GET["page"];

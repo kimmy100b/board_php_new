@@ -2,17 +2,7 @@
 #게시물 보기
 header('Content-Type: text/html; charset=utf-8');
 include "../include/header.php";
-
-//로그인 되어있는 지 확인
-if (isset($_SESSION['is_login'])) {
-  $user = $_SESSION['user_id'];
-} else { ?>
-  <script>
-    alert("로그인하세요");
-    location.href = "../member/login.php";
-  </script>
-<?php
-}
+include "../include/loginCheck.php";
 
 $board_sid = $_GET['board_sid'];
 //제목, 작성자, 내용 SQL
@@ -79,7 +69,7 @@ if ($file = mysqli_fetch_array($f_result)) {
       <button type="button" class="btn btn-outline-secondary submit-btn__list" onclick="location.href='list.php'">목차</button>
       <div class="submit-btn__change">
         <?php if ($user == $writer || isset($_SESSION['is_admin'])) { ?>
-          <button type="button" class="btn btn-secondary submit-btn__modify" onclick="location.href='modify_write.php?board_sid=<?= $board_sid ?>'">수정</button>
+          <button type="button" class="btn btn-secondary submit-btn__modify" onclick="location.href='write.php?board_sid=<?= $board_sid ?>'">수정</button>
           <button type="button" class="btn btn-secondary submit-btn__delete" onclick="location.href='process.php?mode=delete&board_sid=<?= $board_sid ?>'">삭제</button>
         <?php } ?>
       </div>
